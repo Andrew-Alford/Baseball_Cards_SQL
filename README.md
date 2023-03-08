@@ -9,10 +9,6 @@ This project is a MSSQL database designed to manage a baseball card collection. 
 
 ### Usage
 
-Sure! Here's an example of usage instructions for your MSSQL database project based on a baseball card collection:
-
-### Usage
-
 1. Open SQL Server Management Studio and connect to the MSSQL server where you created the Baseball Card Collection database.
 2. Once connected, open a new query window and execute the SQL script provided with the project to create the necessary tables and relationships.
 3. Import your baseball card collection data into the database. This can be done using the Import/Export Wizard in SQL Server Management Studio or by executing SQL INSERT statements for each record.
