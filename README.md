@@ -14,11 +14,14 @@ This project is a MSSQL database designed to manage a baseball card collection. 
 3. Import your baseball card collection data into the database. This can be done using the Import/Export Wizard in SQL Server Management Studio or by executing SQL INSERT statements for each record.
 4. Once your data is imported, you can query the database to retrieve player stats, team information, and other related data. For example, you might use the following SQL statement to retrieve batting statistics for a specific player:
 
-SELECT * 
-FROM players_attributes as patt
-  JOIN players_stats_by_year pstats ON players_attributes.player_id = players_stats_by_year.player_id
-WHERE patt.player_firstname = 'George'
-  AND patt.player_lastname = 'Foster'
+<pre>
+SELECT * <br />
+FROM players_attributes as patt 
+  JOIN players_stats_by_year pstats 
+    ON players_attributes.player_id = players_stats_by_year.player_id 
+WHERE patt.player_firstname = 'George' 
+  AND patt.player_lastname = 'Foster' 
+</pre>
   
 5. You can also use SQL queries to perform more complex analysis on your data, such as calculating batting averages, on-base percentages, and other statistical measures.
 6. To modify the database schema, add additional tables, or make other changes, open the SQL script provided with the project and modify it as needed. Then, execute the modified script to apply your changes to the database.
