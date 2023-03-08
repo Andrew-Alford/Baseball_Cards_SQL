@@ -15,7 +15,7 @@ This project is a MSSQL database designed to manage a baseball card collection. 
 4. Once your data is imported, you can query the database to retrieve player stats, team information, and other related data. For example, you might use the following SQL statement to retrieve batting statistics for a specific player:
 
 <pre>
-SELECT * <br />
+SELECT * 
 FROM players_attributes as patt 
   JOIN players_stats_by_year pstats 
     ON players_attributes.player_id = players_stats_by_year.player_id 
