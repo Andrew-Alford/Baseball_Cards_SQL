@@ -3,15 +3,15 @@
 Baseball card and player data for years 1970 - 1989
 
 
-## Project Description
+### Project Description
 
 This project is a MSSQL database designed to manage a baseball card collection. It includes tables that reference player stats, teams, positions, and other related information. The database can be used to track and analyze a user's baseball card collection, as well as provide insights into player and team performance based on historical data. The project is designed to be scalable and customizable, allowing users to add additional tables or modify existing ones to suit their specific needs. The goal of the project is to provide an easy-to-use, comprehensive tool for managing and analyzing baseball card collections.
 
-## Usage
+### Usage
 
 Sure! Here's an example of usage instructions for your MSSQL database project based on a baseball card collection:
 
-## Usage
+### Usage
 
 1. Open SQL Server Management Studio and connect to the MSSQL server where you created the Baseball Card Collection database.
 2. Once connected, open a new query window and execute the SQL script provided with the project to create the necessary tables and relationships.
@@ -28,7 +28,7 @@ WHERE patt.player_firstname = 'George'
 6. To modify the database schema, add additional tables, or make other changes, open the SQL script provided with the project and modify it as needed. Then, execute the modified script to apply your changes to the database.
 7.Remember to back up your database regularly to prevent data loss in case of system failure or other issues.tion.]
 
-## Contributing
+### Contributing
 
 We welcome contributions from the community and are grateful for any feedback on this project. To contribute, please follow these steps:
 
@@ -41,7 +41,7 @@ We welcome contributions from the community and are grateful for any feedback on
 
 Please note that we have a code of conduct for all contributors to this project. By participating in this project, you agree to abide by its terms. 
 
-## License
+### License
 
 Please refer to LICENSE.sql
 
