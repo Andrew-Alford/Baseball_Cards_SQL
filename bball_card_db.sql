@@ -103,7 +103,17 @@ create table fielders (
 )
 
 create table bills_cards (
-
+    bills_card_id int identity primary key,
+    bills_card_psa_cert int not null UNIQUE,
+    bills_card_psa_spec int not null,
+    bills_card_card_num int not null,
+    bills_card_card_var char(4) null,
+    bills_card_year int not null
+        check (bills_card_year >= 1970 and bills_card_year <= 1989),
+    bills_card_name varchar(100) not null,
+    bills_card_grade float not NULL,
+    bills_card_pop int not null,
+    bills_card_pop_higher int
 )
 
 -- testing
