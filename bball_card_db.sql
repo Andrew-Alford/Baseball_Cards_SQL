@@ -116,4 +116,21 @@ create table bills_cards (
     bills_card_pop_higher int
 )
 
--- testing
+insert into bills_cards (
+    bills_card_psa_cert,
+    bills_card_psa_spec,
+    bills_card_card_num,
+    bills_card_card_var,
+    bills_card_year,
+    bills_card_name,
+    bills_card_grade,
+    bills_card_pop,
+    bills_card_pop_higher
+)
+values (20765405,101720010,1,null,1972,'PIRATES TEAM',8,282,83)
+select * from bills_cards
+delete from bills_cards where bills_card_id=1
+
+BULK INSERT bills_cards
+FROM 'Bills_1972.csv'
+
