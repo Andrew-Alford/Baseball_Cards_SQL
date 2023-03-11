@@ -1,4 +1,4 @@
-Cert #, Spec #, Card #,Variation, Date, Item, Grade, Total Pop, Total Pop Higher
+cert_num, spec_num,card_num,variation,date,item,grade,total_pop,total_pop_higher
 20765405,101720010,1,,1972,PIRATES TEAM,8,282,83
 25087356,101720020,2,,1972,RAY CULP,8,106,37
 20797510,101720030,3,,1972,BOB TOLAN,8,146,84

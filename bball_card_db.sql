@@ -102,35 +102,31 @@ create table fielders (
 
 )
 
+--Standard table creation without using the migration extension
 create table bills_cards (
     bills_card_id int identity primary key,
-    bills_card_psa_cert int not null UNIQUE,
-    bills_card_psa_spec int not null,
-    bills_card_card_num int not null,
-    bills_card_card_var char(4) null,
-    bills_card_year int not null
-        check (bills_card_year >= 1970 and bills_card_year <= 1989),
-    bills_card_name varchar(100) not null,
+    bills_card_cert int not null UNIQUE,
+    bills_card_spec int not null,
+    bills_num int not null,
+    bills_card_year int not null,
+    bills_card_desc varchar(100) not null,
     bills_card_grade float not NULL,
     bills_card_pop int not null,
     bills_card_pop_higher int
 )
-
-insert into bills_cards (
-    bills_card_psa_cert,
-    bills_card_psa_spec,
-    bills_card_card_num,
-    bills_card_card_var,
-    bills_card_year,
-    bills_card_name,
-    bills_card_grade,
-    bills_card_pop,
-    bills_card_pop_higher
-)
-values (20765405,101720010,1,null,1972,'PIRATES TEAM',8,282,83)
 select * from bills_cards
-delete from bills_cards where bills_card_id=1
 
-BULK INSERT bills_cards
-FROM 'Bills_1972.csv'
+--insert into bills_cards (
+--    bills_card_psa_cert,
+--    bills_card_psa_spec,
+--    bills_card_num,
+--    bills_card_year,
+--    bills_card_desc,
+--    bills_card_grade,
+--    bills_card_pop,
+--    bills_card_pop_higher
+--)
+--values (20765405,101720010,1,null,1972,'PIRATES TEAM',8,282,83)
+
+select * from bills_cards
 
