@@ -131,10 +131,13 @@ select * from bills_cards
 
 create table cards (
     card_id int identity primary key,
-    card_year int,
-    card_num int not null,
-    card_desc varchar(100) not null,
-    card_notes varchar(150) NULL,
-    card_player_url varchar(150) NULL
+    card_year float not null,
+    card_num float not null,
+    card_desc nvarchar not null,
+    card_notes nvarchar NULL,
+    card_player_url nvarchar NULL
 )
+ALTER TABLE cards
+  ADD CONSTRAINT uq_card_num_year UNIQUE(card_year, card_num);
+
 select * from cards
