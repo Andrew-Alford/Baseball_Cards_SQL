@@ -13,6 +13,7 @@ GO
 
 -- Down / Reset
 drop table if exists bills_cards
+drop table if exists cards
 drop table if exists fielders
 drop table if exists pitchers
 drop table if exists player_stats_by_year
@@ -102,12 +103,12 @@ create table fielders (
 
 )
 
---Standard table creation without using the migration extension
+
 create table bills_cards (
     bills_card_id int identity primary key,
     bills_card_cert int not null UNIQUE,
     bills_card_spec int not null,
-    bills_num int not null,
+    bills_card_num int not null,
     bills_card_year int not null,
     bills_card_desc varchar(100) not null,
     bills_card_grade float not NULL,
@@ -128,5 +129,12 @@ select * from bills_cards
 --)
 --values (20765405,101720010,1,null,1972,'PIRATES TEAM',8,282,83)
 
-select * from bills_cards
-
+create table cards (
+    card_id int identity primary key,
+    card_year int,
+    card_num int not null,
+    card_desc varchar(100) not null,
+    card_notes varchar(150) NULL,
+    card_player_url varchar(150) NULL
+)
+select * from cards
