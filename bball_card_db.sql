@@ -103,7 +103,7 @@ create table fielders (
 
 )
 
-
+--created table bills_cards and then used Ryan's Python routine to load the data
 create table bills_cards (
     bills_card_id int identity primary key,
     bills_card_cert int not null UNIQUE,
@@ -117,27 +117,11 @@ create table bills_cards (
 )
 select * from bills_cards
 
---insert into bills_cards (
---    bills_card_psa_cert,
---    bills_card_psa_spec,
---    bills_card_num,
---    bills_card_year,
---    bills_card_desc,
---    bills_card_grade,
---    bills_card_pop,
---    bills_card_pop_higher
---)
---values (20765405,101720010,1,null,1972,'PIRATES TEAM',8,282,83)
 
-create table cards (
-    card_id int identity primary key,
-    card_year float not null,
-    card_num float not null,
-    card_desc nvarchar not null,
-    card_notes nvarchar NULL,
-    card_player_url nvarchar NULL
-)
+--Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, and a composite unique constraint
+Alter Table cards
+    Add card_id Int Identity(1, 1)
+Alter Table cards
+    Add primary key (card_id)
 ALTER TABLE cards
-  ADD CONSTRAINT uq_card_num_year UNIQUE(card_year, card_num);
-
-select * from cards
+    ADD CONSTRAINT uq_card_num_year UNIQUE(card_year, card_num);
