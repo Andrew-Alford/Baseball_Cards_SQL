@@ -19,6 +19,7 @@ drop table if exists pitchers
 drop table if exists player_stats_by_year
 drop table if exists teams
 drop table if exists players_attributes
+drop table if exists players
 
 
 -- create tables
@@ -125,3 +126,17 @@ Alter Table cards
     Add primary key (card_id)
 ALTER TABLE cards
     ADD CONSTRAINT uq_card_num_year UNIQUE(card_year, card_num);
+
+--Loaded data into players from a .csv using the Azure extension and then altered it to add an ID ad a PK
+Alter Table players
+    Add player_id Int Identity(1, 1)
+Alter Table players
+    Add primary key (player_id)
+
+
+select card_num,card_desc,card_notes,card_year,card_player_url from cards where card_desc like '%egg% Jack%'
+select * from people
+select * from bills_cards
+select * from cards where card_num=5 and card_year=1972
+select * from cards
+select * from players
