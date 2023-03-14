@@ -1,4 +1,4 @@
-player_name,first_name,middle_name,last_name,nick_name,suffix,player_url
+﻿player_name,first_name,middle_name,last_name,nick_name,suffix,player_url
 Adolfo Phillips,Adolfo,,Phillips,,,https://www.baseball-almanac.com/players/player.php?p=phillad01
 Adrian Devine,Adrian,,Devine,,,https://www.baseball-almanac.com/players/player.php?p=devinad01
 Adrian Garrett,Adrian,,Garrett,,,https://www.baseball-almanac.com/players/player.php?p=garread01
@@ -95,12 +95,14 @@ Barry Lyons,Barry,,Lyons,,,https://www.baseball-almanac.com/players/player.php?p
 Barry Moore,Barry,,Moore,,,https://www.baseball-almanac.com/players/player.php?p=mooreba01
 Bart Johnson,Bart,,Johnson,,,https://www.baseball-almanac.com/players/player.php?p=johnsba01
 Ben Hayes,Ben,,Hayes,,,https://www.baseball-almanac.com/players/player.php?p=hayesbe01
+Ben McDonald,Ben,,McDonald,,,https://www.baseball-almanac.com/players/player.php?p=mcdonbe01
 Ben Oglivie,Ben,,Oglivie,,,https://www.baseball-almanac.com/players/player.php?p=oglivbe01
 Benito Santiago,Benito,,Santiago,,,https://www.baseball-almanac.com/players/player.php?p=santibe01
 Benny Ayala,Benny,,Ayala,,,https://www.baseball-almanac.com/players/player.php?p=ayalabe01
 Benny Distefano,Benny,,Distefano,,,https://www.baseball-almanac.com/players/player.php?p=distebe01
 Bernie Allen,Bernie,,Allen,,,https://www.baseball-almanac.com/players/player.php?p=allenbe01
 Bernie Carbo,Bernie,,Carbo,,,https://www.baseball-almanac.com/players/player.php?p=carbobe01
+Bernie Williams,Bernie,,Williams,,,https://www.baseball-almanac.com/players/player.php?p=willibe02
 Bert Blyleven,Bert,,Blyleven,,,https://www.baseball-almanac.com/players/player.php?p=blylebe01
 Bert Campaneris,Bert,,Campaneris,,,https://www.baseball-almanac.com/players/player.php?p=campabe01
 Bert Roberge,Bert,,Roberge,,,https://www.baseball-almanac.com/players/player.php?p=roberbe01
@@ -303,6 +305,7 @@ Brian Asselstine,Brian,,Asselstine,,,https://www.baseball-almanac.com/players/pl
 Brian Dayett,Brian,,Dayett,,,https://www.baseball-almanac.com/players/player.php?p=dayetbr01
 Brian Downing,Brian,,Downing,,,https://www.baseball-almanac.com/players/player.php?p=downibr01
 Brian Doyle,Brian,,Doyle,,,https://www.baseball-almanac.com/players/player.php?p=doylebr01
+Brian DuBois,Brian,,DuBois,,,https://www.baseball-almanac.com/players/player.php?p=duboibr01
 Brian Fisher,Brian,,Fisher,,,https://www.baseball-almanac.com/players/player.php?p=fishebr01
 Brian Giles,Brian,,Giles,,,https://www.baseball-almanac.com/players/player.php?p=gilesbr01
 Brian Harper,Brian,,Harper,,,https://www.baseball-almanac.com/players/player.php?p=harpebr01
@@ -414,6 +417,7 @@ Chico Ruiz,Chico,,Ruiz,,,https://www.baseball-almanac.com/players/player.php?p=r
 Chico Salmon,Chico,,Salmon,,,https://www.baseball-almanac.com/players/player.php?p=salmoch01
 Chico Walker,Chico,,Walker,,,https://www.baseball-almanac.com/players/player.php?p=walkech01
 Chili Davis,Chili,,Davis,,,https://www.baseball-almanac.com/players/player.php?p=davisch01
+Chip Hale,Chip,,Hale,,,https://www.baseball-almanac.com/players/player.php?p=halech01
 Chip Lang,Chip,,Lang,,,https://www.baseball-almanac.com/players/player.php?p=langch01
 Chris Arnold,Chris,,Arnold,,,https://www.baseball-almanac.com/players/player.php?p=arnolch01
 Chris Bando,Chris,,Bando,,,https://www.baseball-almanac.com/players/player.php?p=bandoch01
@@ -587,6 +591,7 @@ Dave Hengel,Dave,,Hengel,,,https://www.baseball-almanac.com/players/player.php?p
 Dave Hilton,Dave,,Hilton,,,https://www.baseball-almanac.com/players/player.php?p=hiltoda01
 Dave Hostetler,Dave,,Hostetler,,,https://www.baseball-almanac.com/players/player.php?p=hosteda01
 Dave Johnson,Dave,,Johnson,,,https://www.baseball-almanac.com/players/player.php?p=johnsda03
+Dave Johnson,Dave,,Johnson,,,https://www.baseball-almanac.com/players/player.php?p=johnsda04
 Dave Kingman,Dave,,Kingman,,,https://www.baseball-almanac.com/players/player.php?p=kingmda01
 Dave LaPoint,Dave,,LaPoint,,,https://www.baseball-almanac.com/players/player.php?p=lapoida01
 Dave LaRoche,Dave,,LaRoche,,,https://www.baseball-almanac.com/players/player.php?p=larocda01
@@ -647,6 +652,7 @@ Dean Chance,Dean,,Chance,,,https://www.baseball-almanac.com/players/player.php?p
 Del Crandall,Del,,Crandall,,,https://www.baseball-almanac.com/players/player.php?p=crandde01
 Del Rice,Del,,Rice,,,https://www.baseball-almanac.com/players/player.php?p=ricede01
 Del Unser,Del,,Unser,,,https://www.baseball-almanac.com/players/player.php?p=unserde01
+Delino DeShields,Delino,,DeShields,,,https://www.baseball-almanac.com/players/player.php?p=deshide01
 Dell Alston,Dell,,Alston,,,https://www.baseball-almanac.com/players/player.php?p=alstode01
 Denis Menke,Denis,,Menke,,,https://www.baseball-almanac.com/players/player.php?p=menkede01
 Dennis Blair,Dennis,,Blair,,,https://www.baseball-almanac.com/players/player.php?p=blairde01
@@ -741,6 +747,7 @@ Don Wert,Don,,Wert,,,https://www.baseball-almanac.com/players/player.php?p=wertd
 Don Wilson,Don,,Wilson,,,https://www.baseball-almanac.com/players/player.php?p=wilsodo01
 Don Young,Don,,Young,,,https://www.baseball-almanac.com/players/player.php?p=youngdo01
 Don Zimmer,Don,,Zimmer,,,https://www.baseball-almanac.com/players/player.php?p=zimmedo01
+Donald Harris,Donald,,Harris,,,https://www.baseball-almanac.com/players/player.php?p=harrido01
 Donell Nixon,Donell,,Nixon,,,https://www.baseball-almanac.com/players/player.php?p=nixondo01
 Donn Clendenon,Donn,,Clendenon,,,https://www.baseball-almanac.com/players/player.php?p=clenddo01
 Donn Pall,Donn,,Pall,,,https://www.baseball-almanac.com/players/player.php?p=palldo01
@@ -766,6 +773,7 @@ Doug Konieczny,Doug,,Konieczny,,,https://www.baseball-almanac.com/players/player
 Doug Rader,Doug,,Rader,,,https://www.baseball-almanac.com/players/player.php?p=raderdo02
 Doug Rau,Doug,,Rau,,,https://www.baseball-almanac.com/players/player.php?p=raudo01
 Doug Sisk,Doug,,Sisk,,,https://www.baseball-almanac.com/players/player.php?p=siskdo01
+Doug Strange,Doug,,Strange,,,https://www.baseball-almanac.com/players/player.php?p=strando01
 Doyle Alexander,Doyle,,Alexander,,,https://www.baseball-almanac.com/players/player.php?p=alexado01
 Drew Hall,Drew,,Hall,,,https://www.baseball-almanac.com/players/player.php?p=halldr01
 Duane Josephson,Duane,,Josephson,,,https://www.baseball-almanac.com/players/player.php?p=josepdu01
@@ -782,6 +790,7 @@ Dwight Evans,Dwight,,Evans,,,https://www.baseball-almanac.com/players/player.php
 Dwight Gooden,Dwight,,Gooden,,,https://www.baseball-almanac.com/players/player.php?p=goodedw01
 Dwight Lowry,Dwight,,Lowry,,,https://www.baseball-almanac.com/players/player.php?p=lowrydw01
 Dyar Miller,Dyar,,Miller,,,https://www.baseball-almanac.com/players/player.php?p=milledy01
+Earl Cunningham,Earl,,Cunningham,,,
 Earl Williams,Earl,,Williams,,,https://www.baseball-almanac.com/players/player.php?p=williea02
 Earl Wilson,Earl,,Wilson,,,https://www.baseball-almanac.com/players/player.php?p=wilsoea01
 Ed Acosta,Ed,,Acosta,,,https://www.baseball-almanac.com/players/player.php?p=acosted01
@@ -810,6 +819,7 @@ Ed Spiezio,Ed,,Spiezio,,,https://www.baseball-almanac.com/players/player.php?p=s
 Ed Sprague,Ed,,Sprague,,,https://www.baseball-almanac.com/players/player.php?p=spraged01
 Ed Stroud,Ed,,Stroud,,,https://www.baseball-almanac.com/players/player.php?p=stroued01
 Ed Vande Berg,Ed,Vande,Berg,,,https://www.baseball-almanac.com/players/player.php?p=vandeed01
+Ed Whited,Ed,,Whited,,,https://www.baseball-almanac.com/players/player.php?p=whiteed02
 Ed Whitson,Ed,,Whitson,,,https://www.baseball-almanac.com/players/player.php?p=whitsed01
 Ed Wojna,Ed,,Wojna,,,https://www.baseball-almanac.com/players/player.php?p=wojnaed01
 Eddie Bane,Eddie,,Bane,,,https://www.baseball-almanac.com/players/player.php?p=baneed01
@@ -833,6 +843,7 @@ Ellis Valentine,Ellis,,Valentine,,,https://www.baseball-almanac.com/players/play
 Enos Cabell,Enos,,Cabell,,,https://www.baseball-almanac.com/players/player.php?p=cabelen01
 Enrique Romo,Enrique,,Romo,,,https://www.baseball-almanac.com/players/player.php?p=romoen01
 Enzo Hernandez,Enzo,,Hernandez,,,https://www.baseball-almanac.com/players/player.php?p=hernaen01
+Eric Anthony,Eric,,Anthony,,,https://www.baseball-almanac.com/players/player.php?p=anthoer01
 Eric Bell,Eric,,Bell,,,https://www.baseball-almanac.com/players/player.php?p=beller01
 Eric Davis,Eric,,Davis,,,https://www.baseball-almanac.com/players/player.php?p=daviser01
 Eric King,Eric,,King,,,https://www.baseball-almanac.com/players/player.php?p=kinger01
@@ -843,6 +854,7 @@ Eric Rasmussen,Eric,,Rasmussen,,,https://www.baseball-almanac.com/players/player
 Eric Show,Eric,,Show,,,https://www.baseball-almanac.com/players/player.php?p=shower01
 Eric Soderholm,Eric,,Soderholm,,,https://www.baseball-almanac.com/players/player.php?p=soderer01
 Eric Wilkins,Eric,,Wilkins,,,https://www.baseball-almanac.com/players/player.php?p=wilkier01
+Eric Yelding,Erick,,Yelding,,,https://www.baseball-almanac.com/players/player.php?p=yeldier01
 Ernest Riles,Ernest,,Riles,,,https://www.baseball-almanac.com/players/player.php?p=rileser01
 Ernie Banks,Ernie,,Banks,,,https://www.baseball-almanac.com/players/player.php?p=bankser01
 Ernie Camacho,Ernie,,Camacho,,,https://www.baseball-almanac.com/players/player.php?p=camacer01
@@ -923,6 +935,7 @@ Gary Green,Gary,,Green,,,https://www.baseball-almanac.com/players/player.php?p=g
 Gary Lavelle,Gary,,Lavelle,,,https://www.baseball-almanac.com/players/player.php?p=lavelga01
 Gary Lucas,Gary,,Lucas,,,https://www.baseball-almanac.com/players/player.php?p=lucasga01
 Gary Matthews,Gary,,Matthews,,,https://www.baseball-almanac.com/players/player.php?p=matthga01
+Gary Mielke,Gary,,Mielke,,,https://www.baseball-almanac.com/players/player.php?p=mielkga01
 Gary Neibauer,Gary,,Neibauer,,,https://www.baseball-almanac.com/players/player.php?p=neibaga01
 Gary Nolan,Gary,,Nolan,,,https://www.baseball-almanac.com/players/player.php?p=nolanga01
 Gary Peters,Gary,,Peters,,,https://www.baseball-almanac.com/players/player.php?p=peterga01
@@ -966,6 +979,7 @@ George Bell,George,,Bell,,,https://www.baseball-almanac.com/players/player.php?p
 George Bjorkman,George,,Bjorkman,,,https://www.baseball-almanac.com/players/player.php?p=bjorkge01
 George Brett,George,,Brett,,,https://www.baseball-almanac.com/players/player.php?p=brettge01
 George Brunet,George,,Brunet,,,https://www.baseball-almanac.com/players/player.php?p=brunege01
+George Canale,George,,Canale,,,https://www.baseball-almanac.com/players/player.php?p=canalge01
 George Cappuzzello,George,,Cappuzzello,,,https://www.baseball-almanac.com/players/player.php?p=cappuge01
 George Culver,George,,Culver,,,https://www.baseball-almanac.com/players/player.php?p=culvege01
 George Foster,George,,Foster,,,https://www.baseball-almanac.com/players/player.php?p=fostege01
@@ -1021,6 +1035,7 @@ Greg Garrett,Greg,,Garrett,,,https://www.baseball-almanac.com/players/player.php
 Greg Goossen,Greg,,Goossen,,,https://www.baseball-almanac.com/players/player.php?p=goossgr01
 Greg Gross,Greg,,Gross,,,https://www.baseball-almanac.com/players/player.php?p=grossgr01
 Greg Harris,Greg,,Harris,,,https://www.baseball-almanac.com/players/player.php?p=harrigr01
+Greg Hibbard,Greg,,Hibbard,,,https://www.baseball-almanac.com/players/player.php?p=hibbagr01
 Greg Luzinski,Greg,,Luzinski,,,https://www.baseball-almanac.com/players/player.php?p=luzingr01
 Greg Maddux,Greg,,Maddux,,,https://www.baseball-almanac.com/players/player.php?p=maddugr01
 Greg Mathews,Greg,,Mathews,,,https://www.baseball-almanac.com/players/player.php?p=mathegr01
@@ -1083,6 +1098,7 @@ Jack Baldschun,Jack,,Baldschun,,,https://www.baseball-almanac.com/players/player
 Jack Billingham,Jack,,Billingham,,,https://www.baseball-almanac.com/players/player.php?p=billija01
 Jack Brohamer,Jack,,Brohamer,,,https://www.baseball-almanac.com/players/player.php?p=brohaja01
 Jack Clark,Jack,,Clark,,,https://www.baseball-almanac.com/players/player.php?p=clarkja01
+Jack Daugherty,Jack,,Daugherty,,,https://www.baseball-almanac.com/players/player.php?p=daughja01
 Jack DiLauro,Jack,,DiLauro,,,https://www.baseball-almanac.com/players/player.php?p=dilauja01
 Jack Fimple,Jack,,Fimple,,,https://www.baseball-almanac.com/players/player.php?p=fimplja01
 Jack Fisher,Jack,,Fisher,,,https://www.baseball-almanac.com/players/player.php?p=fisheja01
@@ -1109,6 +1125,7 @@ Jamie Moyer,Jamie,,Moyer,,,https://www.baseball-almanac.com/players/player.php?p
 Jamie Nelson,Jamie,,Nelson,,,https://www.baseball-almanac.com/players/player.php?p=nelsoja01
 Jamie Quirk,Jamie,,Quirk,,,https://www.baseball-almanac.com/players/player.php?p=quirkja01
 Jarvis Tatum,Jarvis,,Tatum,,,https://www.baseball-almanac.com/players/player.php?p=tatumja01
+Jason Grimsley,Jason,,Grimsley,,,https://www.baseball-almanac.com/players/player.php?p=grimsja01
 Jason Thompson,Jason,,Thompson,,,
 Jay Aldrich,Jay,,Aldrich,,,https://www.baseball-almanac.com/players/player.php?p=aldrija01
 Jay Baller,Jay,,Baller,,,https://www.baseball-almanac.com/players/player.php?p=balleja01
@@ -1130,8 +1147,12 @@ Jeff Dedmon,Jeff,,Dedmon,,,https://www.baseball-almanac.com/players/player.php?p
 Jeff Hamilton,Jeff,,Hamilton,,,https://www.baseball-almanac.com/players/player.php?p=hamilje01
 Jeff Hearron,Jeff,,Hearron,,,https://www.baseball-almanac.com/players/player.php?p=hearrje01
 Jeff Holly,Jeff,,Holly,,,https://www.baseball-almanac.com/players/player.php?p=hollyje01
+Jeff Huson,Jeff,,Huson,,,https://www.baseball-almanac.com/players/player.php?p=husonje01
+Jeff Innis,Jeff,,Innis,,,https://www.baseball-almanac.com/players/player.php?p=innisje01
+Jeff Jackson,Jeff,,Jackson,,,
 Jeff James,Jeff,,James,,,https://www.baseball-almanac.com/players/player.php?p=jamesje01
 Jeff Jones,Jeff,,Jones,,,https://www.baseball-almanac.com/players/player.php?p=jonesje01
+Jeff Juden,Jeff,,Juden,,,https://www.baseball-almanac.com/players/player.php?p=judenje01
 Jeff Kunkel,Jeff,,Kunkel,,,https://www.baseball-almanac.com/players/player.php?p=kunkeje01
 Jeff Lahti,Jeff,,Lahti,,,https://www.baseball-almanac.com/players/player.php?p=lahtije01
 Jeff Little,Jeff,,Little,,,https://www.baseball-almanac.com/players/player.php?p=littlje01
@@ -1149,6 +1170,7 @@ Jeff Stone,Jeff,,Stone,,,https://www.baseball-almanac.com/players/player.php?p=s
 Jeff Terpko,Jeff,,Terpko,,,https://www.baseball-almanac.com/players/player.php?p=terpkje01
 Jeff Torborg,Jeff,,Torborg,,,https://www.baseball-almanac.com/players/player.php?p=torboje01
 Jeff Treadway,Jeff,,Treadway,,,https://www.baseball-almanac.com/players/player.php?p=treadje01
+Jeff Wetherby,Jeff,,Wetherby,,,https://www.baseball-almanac.com/players/player.php?p=wetheje01
 Jeffrey Leonard,Jeffrey,,Leonard,,,https://www.baseball-almanac.com/players/player.php?p=leonaje01
 Jerry Adair,Jerry,,Adair,,,https://www.baseball-almanac.com/players/player.php?p=adairje01
 Jerry Augustine,Jerry,,Augustine,,,https://www.baseball-almanac.com/players/player.php?p=augusje01
@@ -1462,6 +1484,7 @@ Juan Bonilla,Juan,,Bonilla,,,https://www.baseball-almanac.com/players/player.php
 Juan Castillo,Juan,,Castillo,,,https://www.baseball-almanac.com/players/player.php?p=castiju01
 Juan Eichelberger,Juan,,Eichelberger,,,https://www.baseball-almanac.com/players/player.php?p=eicheju01
 Juan Espino,Juan,,Espino,,,https://www.baseball-almanac.com/players/player.php?p=espinju01
+Juan Gonzalez,Juan,,Gonzolez,,,https://www.baseball-almanac.com/players/player.php?p=gonzaju03
 Juan Marichal,Juan,,Marichal,,,https://www.baseball-almanac.com/players/player.php?p=maricju01
 Juan Nieves,Juan,,Nieves,,,https://www.baseball-almanac.com/players/player.php?p=nieveju01
 Juan Pizarro,Juan,,Pizarro,,,https://www.baseball-almanac.com/players/player.php?p=pizarju01
@@ -1471,6 +1494,7 @@ Julian Javier,Julian,,Javier,,,https://www.baseball-almanac.com/players/player.p
 Julio Cruz,Julio,,Cruz,,,https://www.baseball-almanac.com/players/player.php?p=cruzju01
 Julio Franco,Julio,,Franco,,,https://www.baseball-almanac.com/players/player.php?p=francju01
 Julio Gonzalez,Julio,,Gonzalez,,,https://www.baseball-almanac.com/players/player.php?p=gonzaju01
+Julio Machado,Julio,,Machado,,,https://www.baseball-almanac.com/players/player.php?p=machaju01
 Julio Solano,Julio,,Solano,,,https://www.baseball-almanac.com/players/player.php?p=solanju01
 Julio Valdez,Julio,,Valdez,,,https://www.baseball-almanac.com/players/player.php?p=valdeju01
 Junior Kennedy,Junior,,Kennedy,,,https://www.baseball-almanac.com/players/player.php?p=kenneju01
@@ -1490,6 +1514,7 @@ Keith Miller,Keith,,Miller,,,https://www.baseball-almanac.com/players/player.php
 Keith Moreland,Keith,,Moreland,,,https://www.baseball-almanac.com/players/player.php?p=morelke01
 Kelly Downs,Kelly,,Downs,,,https://www.baseball-almanac.com/players/player.php?p=downske01
 Kelly Gruber,Kelly,,Gruber,,,https://www.baseball-almanac.com/players/player.php?p=grubeke01
+Kelly Mann,Kelly,,Mann,,,https://www.baseball-almanac.com/players/player.php?p=mannke01
 Kelly Paris,Kelly,,Paris,,,https://www.baseball-almanac.com/players/player.php?p=pariske01
 Kelvin Chapman,Kelvin,,Chapman,,,https://www.baseball-almanac.com/players/player.php?p=chapmke01
 Ken Aspromonte,Ken,,Aspromonte,,,https://www.baseball-almanac.com/players/player.php?p=asproke01
@@ -1541,9 +1566,11 @@ Kevin Hickey,Kevin,,Hickey,,,https://www.baseball-almanac.com/players/player.php
 Kevin Kobel,Kevin,,Kobel,,,https://www.baseball-almanac.com/players/player.php?p=kobelke01
 Kevin McReynolds,Kevin,,McReynolds,,,https://www.baseball-almanac.com/players/player.php?p=mcreyke01
 Kevin Mitchell,Kevin,,Mitchell,,,https://www.baseball-almanac.com/players/player.php?p=mitchke01
+Kevin Ritz,Kevin,,Ritz,,,https://www.baseball-almanac.com/players/player.php?p=ritzke01
 Kevin Romine,Kevin,,Romine,,,https://www.baseball-almanac.com/players/player.php?p=rominke01
 Kevin Saucier,Kevin,,Saucier,,,https://www.baseball-almanac.com/players/player.php?p=saucike01
 Kevin Seitzer,Kevin,,Seitzer,,,https://www.baseball-almanac.com/players/player.php?p=seitzke01
+Kevin Tapani,Kevin,,Tapani,,,https://www.baseball-almanac.com/players/player.php?p=tapanke01
 Kiko Garcia,Kiko,,Garcia,,,https://www.baseball-almanac.com/players/player.php?p=garciki01
 Kip Young,Kip,,Young,,,https://www.baseball-almanac.com/players/player.php?p=youngki01
 Kirby Puckett,Kirby,,Puckett,,,https://www.baseball-almanac.com/players/player.php?p=puckeki01
@@ -1585,6 +1612,7 @@ Larry Owen,Larry,,Owen,,,https://www.baseball-almanac.com/players/player.php?p=o
 Larry Parrish,Larry,,Parrish,,,https://www.baseball-almanac.com/players/player.php?p=parrila01
 Larry Sheets,Larry,,Sheets,,,https://www.baseball-almanac.com/players/player.php?p=sheetla01
 Larry Stahl,Larry,,Stahl,,,https://www.baseball-almanac.com/players/player.php?p=stahlla01
+Larry Walker,Larry,,Walker,,,https://www.baseball-almanac.com/players/player.php?p=walkela01
 Larry Whisenton,Larry,,Whisenton,,,https://www.baseball-almanac.com/players/player.php?p=whisela01
 Larry Wolfe,Larry,,Wolfe,,,https://www.baseball-almanac.com/players/player.php?p=wolfela01
 Larvell Blanks,Larvell,,Blanks,,,https://www.baseball-almanac.com/players/player.php?p=blankla01
@@ -1692,9 +1720,11 @@ Mark Davis,Mark,,Davis,,,https://www.baseball-almanac.com/players/player.php?p=d
 Mark Eichhorn,Mark,,Eichhorn,,,https://www.baseball-almanac.com/players/player.php?p=eichhma01
 Mark Fidrych,Mark,,Fidrych,,,https://www.baseball-almanac.com/players/player.php?p=fidryma01
 Mark Freeman,Mark,,Freeman,,,https://www.baseball-almanac.com/players/player.php?p=freemma01
+Mark Gardner,Mike,,Gardner,,,https://www.baseball-almanac.com/players/player.php?p=gardnma01
 Mark Grace,Mark,,Grace,,,https://www.baseball-almanac.com/players/player.php?p=gracema01
 Mark Grant,Mark,,Grant,,,https://www.baseball-almanac.com/players/player.php?p=grantma01
 Mark Gubicza,Mark,,Gubicza,,,https://www.baseball-almanac.com/players/player.php?p=gubicma01
+Mark Guthrie,Mark,,Guthrie,,,https://www.baseball-almanac.com/players/player.php?p=guthrma01
 Mark Huismann,Mark,,Huismann,,,https://www.baseball-almanac.com/players/player.php?p=huismma01
 Mark Knudson,Mark,,Knudson,,,https://www.baseball-almanac.com/players/player.php?p=knudsma01
 Mark Langston,Mark,,Langston,,,https://www.baseball-almanac.com/players/player.php?p=langsma01
@@ -1712,6 +1742,7 @@ Mark Salas,Mark,,Salas,,,https://www.baseball-almanac.com/players/player.php?p=s
 Mark Thurmond,Mark,,Thurmond,,,https://www.baseball-almanac.com/players/player.php?p=thurmma01
 Mark Wagner,Mark,,Wagner,,,https://www.baseball-almanac.com/players/player.php?p=wagnema01
 Mark Williamson,Mark,,Williamson,,,https://www.baseball-almanac.com/players/player.php?p=willima05
+Marquis Grissom,Marquis,,Grissom,,,https://www.baseball-almanac.com/players/player.php?p=grissma02
 Marshall Edwards,Marshall,,Edwards,,,https://www.baseball-almanac.com/players/player.php?p=edwarma01
 Marty Barrett,Marty,,Barrett,,,https://www.baseball-almanac.com/players/player.php?p=barrema02
 Marty Bystrom,Marty,,Bystrom,,,https://www.baseball-almanac.com/players/player.php?p=bystrma01
@@ -1719,6 +1750,7 @@ Marty Castillo,Marty,,Castillo,,,https://www.baseball-almanac.com/players/player
 Marty Martinez,Marty,,Martinez,,,https://www.baseball-almanac.com/players/player.php?p=martima01
 Marty Pattin,Marty,,Pattin,,,https://www.baseball-almanac.com/players/player.php?p=pattima01
 Marty Perez,Marty,,Perez,,,https://www.baseball-almanac.com/players/player.php?p=perezma01
+Marty Pevey,Marty,,Pevey,,,https://www.baseball-almanac.com/players/player.php?p=peveyma01
 Marty Sullivan,Marty,,Sullivan,,,https://www.baseball-almanac.com/players/player.php?p=sullima01
 Marv Foley,Marv,,Foley,,,https://www.baseball-almanac.com/players/player.php?p=foleyma01
 Marv Staehle,Marv,,Staehle,,,https://www.baseball-almanac.com/players/player.php?p=staehma01
@@ -1729,6 +1761,7 @@ Matt Nokes,Matt,,Nokes,,,https://www.baseball-almanac.com/players/player.php?p=n
 Matt Williams,Matt,,Williams,,,https://www.baseball-almanac.com/players/player.php?p=willima04
 Matt Young,Matt,,Young,,,https://www.baseball-almanac.com/players/player.php?p=youngma01
 Matty Alou,Matty,,Alou,,,https://www.baseball-almanac.com/players/player.php?p=alouma01
+Mauro Gozzo,Mauro,,Gozzo,,,https://www.baseball-almanac.com/players/player.php?p=gozzoma01
 Maury Wills,Maury,,Wills,,,https://www.baseball-almanac.com/players/player.php?p=willsma01
 Max Alvis,Max,,Alvis,,,https://www.baseball-almanac.com/players/player.php?p=alvisma01
 Max Leon,Max,,Leon,,,https://www.baseball-almanac.com/players/player.php?p=leonma01
@@ -1751,6 +1784,7 @@ Mickey Rivers,Mickey,,Rivers,,,https://www.baseball-almanac.com/players/player.p
 Mickey Scott,Mickey,,Scott,,,https://www.baseball-almanac.com/players/player.php?p=scottmi02
 Mickey Stanley,Mickey,,Stanley,,,https://www.baseball-almanac.com/players/player.php?p=stanlmi01
 Mickey Tettleton,Mickey,,Tettleton,,,https://www.baseball-almanac.com/players/player.php?p=tettlmi01
+Mickey Weston,Mickey,,Weston,,,https://www.baseball-almanac.com/players/player.php?p=westomi01
 Miguel Dilone,Miguel,,Dilone,,,https://www.baseball-almanac.com/players/player.php?p=dilonmi01
 Mike Adams,Mike,,Adams,,,https://www.baseball-almanac.com/players/player.php?p=adamsmi02
 Mike Aldrete,Mike,,Aldrete,,,https://www.baseball-almanac.com/players/player.php?p=aldremi01
@@ -1779,11 +1813,13 @@ Mike Davis,Mike,,Davis,,,https://www.baseball-almanac.com/players/player.php?p=d
 Mike Davison,Mike,,Davison,,,https://www.baseball-almanac.com/players/player.php?p=davismi01
 Mike Diaz,Mike,,Diaz,,,https://www.baseball-almanac.com/players/player.php?p=diazmi01
 Mike Dunne,Mike,,Dunne,,,https://www.baseball-almanac.com/players/player.php?p=dunnemi01
+Mike Dyer,Mike,,Dyer,,,https://www.baseball-almanac.com/players/player.php?p=dyermi01
 Mike Easler,Mike,,Easler,,,https://www.baseball-almanac.com/players/player.php?p=easlemi01
 Mike Edwards,Mike,,Edwards,,,https://www.baseball-almanac.com/players/player.php?p=edwarmi01
 Mike Epstein,Mike,,Epstein,,,https://www.baseball-almanac.com/players/player.php?p=epstemi01
 Mike Felder,Mike,,Felder,,,https://www.baseball-almanac.com/players/player.php?p=feldemi01
 Mike Ferraro,Mike,,Ferraro,,,https://www.baseball-almanac.com/players/player.php?p=ferrami01
+Mike Fetters,Mike,,Fetters,,,https://www.baseball-almanac.com/players/player.php?p=fettemi01
 Mike Fiore,Mike,,Fiore,,,https://www.baseball-almanac.com/players/player.php?p=fioremi01
 Mike Fischlin,Mike,,Fischlin,,,https://www.baseball-almanac.com/players/player.php?p=fischmi01
 Mike Fitzgerald,Mike,,Fitzgerald,,,https://www.baseball-almanac.com/players/player.php?p=fitzgmi02
@@ -1845,10 +1881,12 @@ Mike Schooler,Mike,,Schooler,,,https://www.baseball-almanac.com/players/player.p
 Mike Scioscia,Mike,,Scioscia,,,https://www.baseball-almanac.com/players/player.php?p=sciosmi01
 Mike Scott,Mike,,Scott,,,https://www.baseball-almanac.com/players/player.php?p=scottmi03
 Mike Shannon,Mike,,Shannon,,,https://www.baseball-almanac.com/players/player.php?p=shannmi01
+Mike Smith,Mike,,Smith,,,https://www.baseball-almanac.com/players/player.php?p=smithmi05
 Mike Smithson,Mike,,Smithson,,,https://www.baseball-almanac.com/players/player.php?p=smithmi03
 Mike Squires,Mike,,Squires,,,https://www.baseball-almanac.com/players/player.php?p=squirmi01
 Mike Stanley,Mike,,Stanley,,,https://www.baseball-almanac.com/players/player.php?p=stanlmi02
 Mike Stanton,Mike,,Stanton,,,https://www.baseball-almanac.com/players/player.php?p=stantmi01
+Mike Stanton,Mike,,Stanton,,,https://www.baseball-almanac.com/players/player.php?p=stantmi02
 Mike Stenhouse,Mike,,Stenhouse,,,https://www.baseball-almanac.com/players/player.php?p=stenhmi01
 Mike Thompson,Mike,,Thompson,,,https://www.baseball-almanac.com/players/player.php?p=thompmi01
 Mike Torrez,Mike,,Torrez,,,https://www.baseball-almanac.com/players/player.php?p=torremi01
@@ -1946,6 +1984,7 @@ Paul Assenmacher,Paul,,Assenmacher,,,https://www.baseball-almanac.com/players/pl
 Paul Blair,Paul,,Blair,,,https://www.baseball-almanac.com/players/player.php?p=blairpa01
 Paul Boris,Paul,,Boris,,,https://www.baseball-almanac.com/players/player.php?p=borispa01
 Paul Casanova,Paul,,Casanova,,,https://www.baseball-almanac.com/players/player.php?p=casanpa01
+Paul Coleman,Paul,,Coleman,,,
 Paul Dade,Paul,,Dade,,,https://www.baseball-almanac.com/players/player.php?p=dadepa01
 Paul Doyle,Paul,,Doyle,,,https://www.baseball-almanac.com/players/player.php?p=doylepa01
 Paul Edmondson,Paul,,Edmondson,,,https://www.baseball-almanac.com/players/player.php?p=edmonpa01
@@ -2031,6 +2070,7 @@ Randy Jones,Randy,,Jones,,,https://www.baseball-almanac.com/players/player.php?p
 Randy Kramer,Randy,,Kramer,,,https://www.baseball-almanac.com/players/player.php?p=kramera01
 Randy Lerch,Randy,,Lerch,,,https://www.baseball-almanac.com/players/player.php?p=lerchra01
 Randy Martz,Randy,,Martz,,,https://www.baseball-almanac.com/players/player.php?p=martzra01
+Randy McCament,Randy,,McCament,,,https://www.baseball-almanac.com/players/player.php?p=mccamra01
 Randy Moffitt,Randy,,Moffitt,,,https://www.baseball-almanac.com/players/player.php?p=moffira01
 Randy Myers,Randy,,Myers,,,https://www.baseball-almanac.com/players/player.php?p=myersra01
 Randy Niemann,Randy,,Niemann,,,https://www.baseball-almanac.com/players/player.php?p=niemara01
@@ -2113,6 +2153,7 @@ Rick Jones,Rick,,Jones,,,https://www.baseball-almanac.com/players/player.php?p=j
 Rick Joseph,Rick,,Joseph,,,https://www.baseball-almanac.com/players/player.php?p=josepri01
 Rick Langford,Rick,,Langford,,,https://www.baseball-almanac.com/players/player.php?p=langfri01
 Rick Leach,Rick,,Leach,,,https://www.baseball-almanac.com/players/player.php?p=leachri01
+Rick Luecken,Rick,,Luecken,,,https://www.baseball-almanac.com/players/player.php?p=lueckri01
 Rick Lysander,Rick,,Lysander,,,https://www.baseball-almanac.com/players/player.php?p=lysanri01
 Rick Mahler,Rick,,Mahler,,,https://www.baseball-almanac.com/players/player.php?p=mahleri01
 Rick Manning,Rick,,Manning,,,https://www.baseball-almanac.com/players/player.php?p=manniri01
@@ -2154,6 +2195,7 @@ Rob Ducey,Rob,,Ducey,,,https://www.baseball-almanac.com/players/player.php?p=duc
 Rob Gardner,Rob,,Gardner,,,https://www.baseball-almanac.com/players/player.php?p=gardnro01
 Rob Murphy,Rob,,Murphy,,,https://www.baseball-almanac.com/players/player.php?p=murphro01
 Rob Picciolo,Rob,,Picciolo,,,https://www.baseball-almanac.com/players/player.php?p=picciro01
+Rob Richie,Rob,,Richie,,,https://www.baseball-almanac.com/players/player.php?p=richiro01
 Rob Sperring,Rob,,Sperring,,,https://www.baseball-almanac.com/players/player.php?p=sperrro01
 Rob Wilfong,Rob,,Wilfong,,,https://www.baseball-almanac.com/players/player.php?p=wilforo01
 Rob Woodward,Rob,,Woodward,,,https://www.baseball-almanac.com/players/player.php?p=woodwbo01
@@ -2187,6 +2229,7 @@ Roger Metzger,Roger,,Metzger,,,https://www.baseball-almanac.com/players/player.p
 Roger Moret,Roger,,Moret,,,https://www.baseball-almanac.com/players/player.php?p=moretro01
 Roger Nelson,Roger,,Nelson,,,https://www.baseball-almanac.com/players/player.php?p=nelsoro02
 Roger Repoz,Roger,,Repoz,,,https://www.baseball-almanac.com/players/player.php?p=repozro01
+Roger Salkeld,Roger,,Salkeld,,,https://www.baseball-almanac.com/players/player.php?p=salkero01
 Rogers Hornsby,Rogers,,Hornsby,,,https://www.baseball-almanac.com/players/player.php?p=hornsro01
 Rollie Fingers,Rollie,,Fingers,,,https://www.baseball-almanac.com/players/player.php?p=fingero01
 Ron Blomberg,Ron,,Blomberg,,,https://www.baseball-almanac.com/players/player.php?p=blombro01
@@ -2271,6 +2314,7 @@ Sam Horn,Sam,,Horn,,,https://www.baseball-almanac.com/players/player.php?p=horns
 Sam Khalifa,Sam,,Khalifa,,,https://www.baseball-almanac.com/players/player.php?p=khalisa01
 Sam McDowell,Sam,,McDowell,,,https://www.baseball-almanac.com/players/player.php?p=mcdowsa01
 Sam Mejias,Sam,,Mejias,,,https://www.baseball-almanac.com/players/player.php?p=mejiasa01
+Sammy Sosa,Sammy,,Sosa,,,https://www.baseball-almanac.com/players/player.php?p=sosasa01
 Sammy Stewart,Sammy,,Stewart,,,https://www.baseball-almanac.com/players/player.php?p=stewasa01
 Sandy Alomar,Sandy,,Alomar,,,https://www.baseball-almanac.com/players/player.php?p=alomasa01
 "Sandy Alomar, Jr.",Sandy,,Alomar,,Jr.,
@@ -2315,6 +2359,7 @@ Sparky Anderson,Sparky,,Anderson,,,https://www.baseball-almanac.com/players/play
 Sparky Lyle,Sparky,,Lyle,,,https://www.baseball-almanac.com/players/player.php?p=lylesp01
 Spike Owen,Spike,,Owen,,,https://www.baseball-almanac.com/players/player.php?p=owensp01
 Stan Bahnsen,Stan,,Bahnsen,,,https://www.baseball-almanac.com/players/player.php?p=bahnsst01
+Stan Belinda,Stan,,Belinda,,,https://www.baseball-almanac.com/players/player.php?p=belinst01
 Stan Clarke,Stan,,Clarke,,,https://www.baseball-almanac.com/players/player.php?p=clarkst02
 Stan Javier,Stan,,Javier,,,https://www.baseball-almanac.com/players/player.php?p=javiest01
 Stan Jefferson,Stan,,Jefferson,,,https://www.baseball-almanac.com/players/player.php?p=jeffest01
@@ -2339,7 +2384,9 @@ Steve Busby,Steve,,Busby,,,https://www.baseball-almanac.com/players/player.php?p
 Steve Carlton,Steve,,Carlton,,,https://www.baseball-almanac.com/players/player.php?p=carltst01
 Steve Comer,Steve,,Comer,,,https://www.baseball-almanac.com/players/player.php?p=comerst01
 Steve Crawford,Steve,,Crawford,,,https://www.baseball-almanac.com/players/player.php?p=crawfst01
+Steve Cummings,Steve,,Cummings,,,https://www.baseball-almanac.com/players/player.php?p=cummist01
 Steve Curry,Steve,,Curry,,,https://www.baseball-almanac.com/players/player.php?p=curryst01
+Steve Davis,Steve,,Davis,,,https://www.baseball-almanac.com/players/player.php?p=davisst03
 Steve Dillard,Steve,,Dillard,,,https://www.baseball-almanac.com/players/player.php?p=dillast01
 Steve Dunning,Steve,,Dunning,,,https://www.baseball-almanac.com/players/player.php?p=dunnist01
 Steve Ellsworth,Steve,,Ellsworth,,,https://www.baseball-almanac.com/players/player.php?p=ellswst01
@@ -2368,6 +2415,7 @@ Steve McCatty,Steve,,McCatty,,,https://www.baseball-almanac.com/players/player.p
 Steve Mingori,Steve,,Mingori,,,https://www.baseball-almanac.com/players/player.php?p=mingost01
 Steve Mura,Steve,,Mura,,,https://www.baseball-almanac.com/players/player.php?p=murast01
 Steve Nicosia,Steve,,Nicosia,,,https://www.baseball-almanac.com/players/player.php?p=nicosst01
+Steve Olin,Steve,,Olin,,,https://www.baseball-almanac.com/players/player.php?p=olinst01
 Steve Ontiveros,Steve,,Ontiveros,,,https://www.baseball-almanac.com/players/player.php?p=ontivst01
 Steve Peters,Steve,,Peters,,,https://www.baseball-almanac.com/players/player.php?p=peterst01
 Steve Renko,Steve,,Renko,,,https://www.baseball-almanac.com/players/player.php?p=renkost01
@@ -2536,6 +2584,7 @@ Tony Brizzolara,Tony,,Brizzolara,,,https://www.baseball-almanac.com/players/play
 Tony Cloninger,Tony,,Cloninger,,,https://www.baseball-almanac.com/players/player.php?p=clonito01
 Tony Conigliaro,Tony,,Conigliaro,,,https://www.baseball-almanac.com/players/player.php?p=conigto01
 Tony Fernandez,Tony,,Fernandez,,,https://www.baseball-almanac.com/players/player.php?p=fernato01
+Tony Fossas,Tony,,Fossas,,,https://www.baseball-almanac.com/players/player.php?p=fossato01
 Tony Gonzalez,Tony,,Gonzalez,,,https://www.baseball-almanac.com/players/player.php?p=gonzato01
 Tony Gwynn,Tony,,Gwynn,,,https://www.baseball-almanac.com/players/player.php?p=gwynnto01
 Tony La Russa,Tony,,La Russa,,,https://www.baseball-almanac.com/players/player.php?p=larusto01
@@ -2555,6 +2604,7 @@ Tucker Ashford,Tucker,,Ashford,,,https://www.baseball-almanac.com/players/player
 Tug McGraw,Tug,,McGraw,,,https://www.baseball-almanac.com/players/player.php?p=mcgratu01
 Ty Cline,Ty,,Cline,,,https://www.baseball-almanac.com/players/player.php?p=clinety01
 Ty Cobb,Ty,,Cobb,,,https://www.baseball-almanac.com/players/player.php?p=cobbty01
+Tyler Houston,Tyler,,Houston,,,https://www.baseball-almanac.com/players/player.php?p=houstty01
 U.L. Washington,U.L.,,Washington,,,https://www.baseball-almanac.com/players/player.php?p=washiu01
 Urbano Lugo,Urbano,,Lugo,,,https://www.baseball-almanac.com/players/player.php?p=lugour01
 Vada Pinson,Vada,,Pinson,,,https://www.baseball-almanac.com/players/player.php?p=pinsova01
