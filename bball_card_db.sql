@@ -6,11 +6,10 @@ go */
 
 /* create database baseball_cards_db
 GO  */
-
+select * from cards
 
 use baseball_cards_db
 GO
-
 -- Down / Reset
 drop table if exists bills_cards
 drop table if exists cards
@@ -116,16 +115,19 @@ create table bills_cards (
     bills_card_pop int not null,
     bills_card_pop_higher int
 )
-select * from bills_cards
+select c.card_desc,c.card_player_id,p.player_id,p.player_url from cards c join players p on c.card_player_id=p.player_id order by p.player_id
 
 
---Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, and a composite unique constraint
+--Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a composite unique constraint
 Alter Table cards
     Add card_id Int Identity(1, 1)
 Alter Table cards
     Add primary key (card_id)
 ALTER TABLE cards
     ADD CONSTRAINT uq_card_num_year UNIQUE(card_year, card_num);
+Alter TABLE cards
+    ADD Foreign key (card_player_id)
+    references players(player_id)
 
 --Loaded data into players from a .csv using the Azure extension and then altered it to add an ID ad a PK
 Alter Table players
@@ -137,6 +139,7 @@ Alter Table players
 select card_num,card_desc,card_notes,card_year,card_player_url from cards where card_desc like '%egg% Jack%'
 select * from people
 select * from bills_cards
-select * from cards where card_num=5 and card_year=1972
 select * from cards
 select * from players
+
+select * from cards left join players on cards.card_player_id=players.player_id
