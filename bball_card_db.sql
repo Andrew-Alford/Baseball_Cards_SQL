@@ -20,7 +20,6 @@ drop table if exists teams
 drop table if exists players_attributes
 drop table if exists players
 
-
 -- create tables
 create table players_attributes (
     player_id int identity primary key,
@@ -104,7 +103,7 @@ create table fielders (
 )
 
 --created table bills_cards and then used Ryan's Python routine to load the data
-create table bills_cards (
+/*create table bills_cards (
     bills_card_id int identity primary key,
     bills_card_cert int not null UNIQUE,
     bills_card_spec int not null,
@@ -116,9 +115,9 @@ create table bills_cards (
     bills_card_pop_higher int
 )
 select c.card_desc,c.card_player_id,p.player_id,p.player_url from cards c join players p on c.card_player_id=p.player_id order by p.player_id
+*/
 
-
---Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a composite unique constraint
+--TABLE CARDS...Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a composite unique constraint
 Alter Table cards
     Add card_id Int Identity(1, 1)
 Alter Table cards
@@ -129,12 +128,24 @@ Alter TABLE cards
     ADD Foreign key (card_player_id)
     references players(player_id)
 
---Loaded data into players from a .csv using the Azure extension and then altered it to add an ID ad a PK
+--TABLE PLAYERS...Loaded data into players from a .csv using the Azure extension and then altered it to add an ID ad a PK
 Alter Table players
     Add player_id Int Identity(1, 1)
 Alter Table players
     Add primary key (player_id)
+Alter Table players
+    drop column player_id_load
 
+--TABLE BILLS_CARDS...Loaded data into bills_cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a unique constraint
+Alter Table bills_cards
+    Add bills_card_id Int Identity(1, 1)
+Alter Table bills_cards
+    Add primary key (bills_card_id)
+ALTER TABLE bills_cards
+    ADD CONSTRAINT uq_bills_card_cert UNIQUE(bills_card_cert)
+Alter TABLE bills_cards
+    ADD Foreign key (bills_card_player_id)
+    references players(player_id)
 
 select card_num,card_desc,card_notes,card_year,card_player_url from cards where card_desc like '%egg% Jack%'
 select * from people
@@ -143,3 +154,4 @@ select * from cards
 select * from players
 
 select * from cards left join players on cards.card_player_id=players.player_id
+select * from teams
