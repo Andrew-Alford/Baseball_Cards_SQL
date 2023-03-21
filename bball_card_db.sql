@@ -57,7 +57,7 @@ create table players_stats_by_year (
     stats_year year not null,
     stats_league varchar(50) not null,
     stats_games int not null,
-    stats_position varchar(2) not null,
+    stats_position varchar(10) not null,
     stats_at_bat int, 
     stats_wins int,
     stats_losses int,
