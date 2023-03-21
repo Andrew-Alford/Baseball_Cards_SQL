@@ -201,8 +201,6 @@ BEGIN
   BEGIN
     SELECT p.nameFirst
       , p.nameLast
-      , p.bats
-      , p.throws
       , s.team_id
       , s.stats_year
       , s.stats_league
