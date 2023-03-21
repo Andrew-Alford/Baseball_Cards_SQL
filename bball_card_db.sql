@@ -157,3 +157,119 @@ select * from players
 
 select * from cards left join players on cards.card_player_id=players.player_id
 select * from teams
+
+
+--Andrew Alford Stored Procedure Use Case 1:
+DROP PROCEDURE IF EXISTS get_player_stats
+GO
+CREATE PROCEDURE get_player_stats
+    @year_id INT = NULL
+  , @player_first_name VARCHAR(50) = NULL
+  , @player_last_name VARCHAR(50) = NULL
+  , @pitchers BIT = NULL
+  , @fielders BIT = NULL
+  , @personal BIT = 0
+  , @professional BIT = 0
+AS
+BEGIN
+  DECLARE @rowcount INT
+  IF (@personal = 1)
+  BEGIN
+    SELECT p.nameFirst
+      , p.nameLast
+      , p.birthYear
+      , p.birthCountry
+      , p.birthState
+      , p.deathYear
+      , p.height
+      , p.weight
+      , p.bats
+      , p.throws
+      , p.debut
+      , p.finalGame
+    FROM people as p
+    WHERE (@player_first_name IS NULL OR p.nameFirst LIKE '%' + @player_first_name + '%')
+      AND (@player_last_name IS NULL OR p.nameLast LIKE '%' + @player_last_name + '%')
+    SET @rowcount = @@ROWCOUNT
+    IF (@rowcount > 500)
+    BEGIN
+      RAISERROR ('More than 500 rows returned, please refine your search!', 16, 1)
+      RETURN
+    END
+  END
+  IF (@professional = 1)
+  BEGIN
+    SELECT p.nameFirst
+      , p.nameLast
+      , p.bats
+      , p.throws
+      , s.team_id
+      , s.stats_year
+      , s.stats_league
+      , s.stats_games
+      , s.stats_position
+      , s.stats_at_bat
+      , s.stats_wins
+      , s.stats_losses
+      , s.stats_runs
+      , s.stats_hits
+      , s.stats_doubles
+      , s.stats_triples
+      , s.stats_home_runs
+      , s.stats_rbi
+      , s.stats_stolen_bases
+      , s.stats_hit_by_pitch
+      , s.stats_sac_hits
+      , s.stats_sac_flies
+      , s.stats_grd_dbl_play
+      , s.stats_putouts
+      , s.stats_assists
+      , s.stats_errors
+      , s.stats_dbl_plays
+      , s.stats_passed_balls_c
+      , s.stats_wild_pitches
+      , s.stats_opp_stolen_bases_c
+      , s.stats_strike_outs
+      , s.stats_opp_batting_avg
+      , s.stats_games_started
+      , s.stats_completed_games
+      , s.stats_shutouts
+      , s.stats_saves
+      , s.stats_era
+      , s.stats_intentional_walk
+    FROM player_stats_by_year as s
+      LEFT JOIN people as p ON s.player_id = p.playerID
+    WHERE
+      (@year_id IS NULL OR (s.stats_year = @year_id))
+      AND (@player_first_name IS NULL OR p.nameFirst LIKE '%' + @player_first_name + '%')
+      AND (@player_last_name IS NULL OR p.nameLast LIKE '%' + @player_last_name + '%')
+      AND ((@pitchers = 1 AND s.stats_position = 'P') OR (@fielders = 1 AND s.stats_position != 'P'))
+    SET @rowcount = @@ROWCOUNT
+    IF (@rowcount > 500)
+    BEGIN
+      RAISERROR ('More than 500 rows returned, please refine your search!', 16, 1)
+    RETURN
+    END
+  END
+END
+GO
+
+
+/*
+Procedure execution format:
+
+EXEC get_player_stats @year_id = (Number or NULL), @player_first_name = (String or NULL), @player_last_name = (String or NULL), @pitchers = (0 or 1), @fielders = (0 or 1), @personal = (0 or 1), @professional = (0 or 1)
+
+Variables will default to NULL or 0 unless otherwise specified.  Variables with options 0 or 1 act as Boolean operators where 0 = False and 1 = True.
+
+Statements that return more than 500 rows will prompt users to refine their search.
+*/
+
+--Example #1: returns the personal stats for all fielders with the first name 'reggie' for all years.
+EXEC get_player_stats @year_id = NULL, @player_first_name = 'reggie', @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 1, @professional = 0
+
+--Example #2: returns the professional stats for all pitchers in the year 1974.
+EXEC get_player_stats @year_id = 1974, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 1, @fielders = 0, @personal = 0, @professional = 1
+
+--Example #3: throws error because too many rows are returned.
+EXEC get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 0, @professional = 1
