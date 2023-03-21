@@ -168,8 +168,8 @@ CREATE PROCEDURE get_player_stats
   , @player_last_name VARCHAR(50) = NULL
   , @pitchers BIT = NULL
   , @fielders BIT = NULL
-  , @personal BIT = 0
-  , @professional BIT = 0
+  , @personal BIT = NULL
+  , @professional BIT = NULL
 AS
 BEGIN
   DECLARE @rowcount INT
