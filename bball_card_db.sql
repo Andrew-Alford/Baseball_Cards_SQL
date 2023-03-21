@@ -99,7 +99,9 @@ create table pitchers (
 )
 
 create table fielders (
-
+    fielder_id int identity primary key, 
+    player_id int not null foreign key references player_attributes (player_id),
+    position varchar(2) not null
 )
 
 --created table bills_cards and then used Ryan's Python routine to load the data
