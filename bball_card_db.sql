@@ -150,6 +150,79 @@ Alter TABLE bills_cards
     references players(player_id)
 
 
+select * from cards left join players on cards.card_player_id=players.player_id
+select * from teams
+
+
+----- script to merge players_id from players into stats and update stats table -----
+
+alter table players
+    add player_url_player_id varchar(20)
+update players
+    set player_url_player_id = SUBSTRING(player_url, CHARINDEX('p=', player_url) + 2, 9)
+
+alter table player_stats_by_year
+    add players_player_id int 
+
+update stats
+    set stats.players_player_id = ply.player_id
+from player_stats_by_year as stats
+    join players as ply on stats.player_id = ply.player_url_player_id
+
+alter table player_stats_by_year
+    add 
+        stats_outs_pitched int,
+        stats_earned_runs int,
+        stats_walks int,
+        stats_batters_hit_by_pitch int,
+        stats_balks int,
+        stats_batters_faced_by_pitcher int,
+        stats_runs_allowed int
+
+
+
+-- outs pitched
+update stats
+    set stats.stats_outs_pitched = pit.IPouts
+from player_stats_by_year as stats
+    join pitchers as pit on stats.player_id = pit.playerID
+where stats.stats_year = pit.yearID
+
+-- earned runs
+update stats
+    set stats.stats_earned_runs = pit.ER
+from player_stats_by_year as stats
+    join pitchers as pit on stats.player_id = pit.playerID
+where stats.stats_year = pit.yearID
+
+-- batters hit by pitch
+update stats
+    set stats.stats_batters_hit_by_pitch = pit.HBP
+from player_stats_by_year as stats
+    join pitchers as pit on stats.player_id = pit.playerID
+where stats.stats_year = pit.yearID
+
+-- balks
+update stats
+    set stats.stats_balks = pit.BK
+from player_stats_by_year as stats
+    join pitchers as pit on stats.player_id = pit.playerID
+where stats.stats_year = pit.yearID
+
+-- batters faced by pitcher
+update stats
+    set stats.stats_batters_faced_by_pitcher = pit.BFP
+from player_stats_by_year as stats
+    join pitchers as pit on stats.player_id = pit.playerID
+where stats.stats_year = pit.yearID
+
+
+-- runs allowed
+update stats
+    set stats.stats_runs_allowed = pit.R
+from player_stats_by_year as stats
+    join pitchers as pit on stats.player_id = pit.playerID
+where stats.stats_year = pit.yearID
 --USE CASE 5 - Upsert into Bills_cards
 -- down
 GO
