@@ -25,7 +25,7 @@ WHERE patt.player_firstname = 'George'
   
 5. You can also use SQL queries to perform more complex analysis on your data, such as calculating batting averages, on-base percentages, and other statistical measures.
 6. To modify the database schema, add additional tables, or make other changes, open the SQL script provided with the project and modify it as needed. Then, execute the modified script to apply your changes to the database.
-7.Remember to back up your database regularly to prevent data loss in case of system failure or other issues.tion.]
+7.Remember to back up your database regularly to prevent data loss in case of system failure or other issues.
 
 ### Contributing
 

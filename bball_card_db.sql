@@ -57,7 +57,7 @@ create table players_stats_by_year (
     stats_year year not null,
     stats_league varchar(50) not null,
     stats_games int not null,
-    stats_position varchar(2) not null,
+    stats_position varchar(10) not null,
     stats_at_bat int, 
     stats_wins int,
     stats_losses int,
@@ -99,7 +99,9 @@ create table pitchers (
 )
 
 create table fielders (
-
+    fielder_id int identity primary key, 
+    player_id int not null foreign key references player_attributes (player_id),
+    position varchar(2) not null
 )
 
 --created table bills_cards and then used Ryan's Python routine to load the data
@@ -147,11 +149,6 @@ Alter TABLE bills_cards
     ADD Foreign key (bills_card_player_id)
     references players(player_id)
 
-select card_num,card_desc,card_notes,card_year,card_player_url from cards where card_desc like '%egg% Jack%'
-select * from people
-select * from bills_cards
-select * from cards
-select * from players
 
 select * from cards left join players on cards.card_player_id=players.player_id
 select * from teams
@@ -226,3 +223,80 @@ update stats
 from player_stats_by_year as stats
     join pitchers as pit on stats.player_id = pit.playerID
 where stats.stats_year = pit.yearID
+--USE CASE 5 - Upsert into Bills_cards
+-- down
+GO
+drop procedure if exists p_upsert_bills_cards
+drop type if exists bills_upsert_type
+
+--up
+-- creating temp table bills_upsert_type to field multi row inputs
+GO
+CREATE TYPE bills_upsert_type AS TABLE
+(card_cert INT,
+card_spec INT,
+card_num INT,
+card_year INT,
+card_psa_desc nvarchar(100),
+card_grade float,
+card_pop int,
+card_pop_higher int,
+card_stat_year int,
+card_player_id int
+)
+GO
+
+CREATE PROCEDURE p_upsert_bills_cards
+    @var_bills_upserts 
+    bills_upsert_type READONLY
+AS
+BEGIN
+
+SET NOCOUNT ON  
+MERGE INTO bills_cards AS target
+    USING (
+        SELECT card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, card_pop, 
+        card_pop_higher, card_stat_year, card_player_id
+        FROM @var_bills_upserts
+    ) AS source (card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, card_pop, 
+    card_pop_higher, card_stat_year, card_player_id)
+ON (target.bills_card_cert = source.card_cert)
+
+WHEN MATCHED THEN
+UPDATE SET
+    bills_card_spec = source.card_spec,
+    bills_card_num = source.card_num,
+    bills_card_year = source.card_year,
+    bills_card_psa_desc = source.card_psa_desc,
+    bills_card_grade = source.card_grade,
+    bills_card_pop = source.card_pop,
+    bills_card_pop_higher = source.card_pop_higher,
+    bills_card_stat_year = source.card_stat_year,
+    bills_card_player_id = source.card_player_id
+
+WHEN NOT MATCHED THEN
+    INSERT (bills_card_cert, bills_card_spec, bills_card_num, bills_card_year, bills_card_psa_desc, bills_card_grade, 
+    bills_card_pop, bills_card_pop_higher, bills_card_stat_year, bills_card_player_id)
+    VALUES (source.card_cert, source.card_spec, source.card_num, source.card_year, source.card_psa_desc, source.card_grade, 
+    source.card_pop, source.card_pop_higher, source.card_stat_year, source.card_player_id);
+END
+GO
+
+-- declaring a table variable "var_upsert_bills_cards" with insert values
+DECLARE @var_upsert_bills_cards AS bills_upsert_type
+INSERT INTO @var_upsert_bills_cards (card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, 
+card_pop, card_pop_higher, card_stat_year, card_player_id)
+VALUES (1234567890, 1234567890, 555, 1986, 'TESTING BILLS UPSERT', 8.5, 45, 10, 1985, 687)
+-- executing my stored procedure (p_upsert_bills_cards) to affect the table bills_cards
+EXEC p_upsert_bills_cards @var_upsert_bills_cards
+
+-- just checking results
+GO
+delete from bills_cards where bills_card_cert=1234567890
+select * from bills_cards where bills_card_cert=1234567890
+
+--END USE CASE 5
+
+Select * from cards
+select * from player_stats_by_year
+select * from pitchers
