@@ -416,3 +416,90 @@ EXEC get_player_stats @year_id = 1974, @player_first_name = NULL, @player_last_n
 
 --Example #3: throws error because too many rows are returned.
 EXEC get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 0, @professional = 1
+
+---- Ryan Summers Stored Procedure Use Case 2:
+drop procedure if exists get_fielder_stats
+GO
+create procedure get_fielder_stats
+    @year int = NULL,
+    @min_batting_avg float = null,
+    @min_hr int = null,
+    @min_hits int = null,
+    @min_obp float = null,
+    @min_games_played int = null
+
+AS
+BEGIN
+    set nocount on
+
+    select 
+        p.player_name, p.player_firstname, p.player_middlename, p.player_lastname, p.player_nickname, p.player_url,
+        s.stats_year, 
+        cast(s.stats_hits as float) / nullif(s.stats_at_bat, 0) as batting_avg,
+        s.stats_home_runs, s.stats_hits,
+        cast(s.stats_hits+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch as float) /
+            nullif(s.stats_at_bat+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch+s.stats_sac_flies,0) as on_base_perc,
+        s.stats_games
+    from players as p
+        inner join player_stats_by_year as s 
+            on p.player_id = s.players_player_id 
+    where s.stats_position != 'P'
+        and (@year is null or s.stats_year = @year)
+        and (@min_batting_avg is null or cast(s.stats_hits as float) / nullif(s.stats_at_bat,0) >= @min_batting_avg)
+        and (@min_hr is null or s.stats_home_runs >= @min_hr)
+        and (@min_hits is null or s.stats_hits >= @min_hits)
+        and (@min_obp is null or cast(s.stats_hits+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch as float) /
+        nullif(s.stats_at_bat+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch+s.stats_sac_flies,0) >= @min_obp)
+        and (@min_games_played is null or s.stats_games >= @min_games_played)
+    order by s.stats_year, p.player_name
+END
+GO
+
+exec get_fielder_stats 
+    @year = 1982
+    ,@min_batting_avg = 0.25 
+    ,@min_hr = 1 
+    ,@min_hits = 1 
+    ,@min_obp = 0.30 
+    ,@min_games_played = 50
+
+-- END USE CASE #2
+
+---- Ryan Summers Stored Procedure Use Case 3:
+drop procedure if exists get_pitcher_stats
+GO
+create procedure get_pitcher_stats
+    @year int = NULL,
+    @min_era float = null,
+    @min_strk_out int = null,
+    @min_wins int = null,
+    @min_inns_pitched int = null
+
+AS
+BEGIN
+    set nocount on
+
+    select p.player_name, p.player_firstname, p.player_middlename, p.player_lastname,
+           p.player_nickname, p.player_url,
+           s.stats_year, s.stats_era, s.stats_strike_outs, s.stats_wins,
+           s.stats_outs_pitched
+    from players as p
+        inner join player_stats_by_year as s 
+            on p.player_id = s.players_player_id 
+    where s.stats_position = 'P'
+        and (@year is null or s.stats_year = @year)
+        and (@min_era is null or s.stats_era >= @min_era)
+        and (@min_strk_out is null or s.stats_strike_outs >= @min_strk_out)
+        and (@min_wins is null or s.stats_wins >= @min_wins)
+        and (@min_inns_pitched is null or s.stats_outs_pitched >= @min_inns_pitched)
+    order by s.stats_year, p.player_name
+END
+
+exec get_pitcher_stats 
+    @year = 1977 
+    ,@min_era = 6 
+    ,@min_strk_out = 3.50 
+    ,@min_wins = 1.20 
+    ,@min_inns_pitched = 100
+
+-- END USE CASE #3
