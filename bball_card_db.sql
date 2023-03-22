@@ -150,7 +150,6 @@ Alter TABLE bills_cards
     references players(player_id)
 
 
-<<<<<<< HEAD
 --USE CASE 5 - Upsert into Bills_cards
 -- down
 GO
@@ -224,7 +223,6 @@ delete from bills_cards where bills_card_cert=1234567890
 select * from bills_cards where bills_card_cert=1234567890
 
 --END USE CASE 5
-=======
 select * from cards left join players on cards.card_player_id=players.player_id
 select * from teams
 
@@ -341,4 +339,3 @@ EXEC get_player_stats @year_id = 1974, @player_first_name = NULL, @player_last_n
 
 --Example #3: throws error because too many rows are returned.
 EXEC get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 0, @professional = 1
->>>>>>> 65c08237f339f4d6597d6e76b66ab2f7170b8c4b
