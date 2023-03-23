@@ -223,6 +223,7 @@ update stats
 from player_stats_by_year as stats
     join pitchers as pit on stats.player_id = pit.playerID
 where stats.stats_year = pit.yearID
+
 --USE CASE 5 - Upsert into Bills_cards
 -- down
 GO
@@ -503,3 +504,192 @@ exec get_pitcher_stats
     ,@min_inns_pitched = 100
 
 -- END USE CASE #3
+
+-- USE CASE #4 - Card Select - 6 scenarios addressed
+/*
+Scenarios:	Return Type	Card Search Type	Action	
+1	Graded cards	Pitchers	Select ONLY cards from bills_cards.  Include graded data and join in pitcher stats	
+2	Graded cards	Fielders	Select ONLY cards from bills_cards.  Include graded data and join in fielder stats	
+3	Graded cards	Other	Select ONLY cards from bills_cards.  Include only graded data	
+4	Raw cards	Pitchers	Select cards from "cards" table.  Join in pitcher stats	
+5	Raw cards	Fielders	Select cards from "cards" table.  Join in fielder stats	
+6	Raw cards	Other	select cards from "cards" table.  Include only data from that table.	
+*/
+
+drop procedure if exists p_card_select_pitchers
+drop procedure if exists p_card_select_fielders
+drop procedure if exists p_card_select_other
+
+GO
+Create procedure p_card_select_fielders
+    @card_type char(6), --raw or graded
+    @search_str nvarchar(100), -- serach string
+    @year char(4) --specific year or 'all' for all years
+AS           
+IF @year = 'all' --for all years
+    BEGIN
+        IF @card_type='raw' --raw cards
+            BEGIN
+            select c.card_desc,c.card_year,c.card_num,c.card_stat_year,c.card_notes --from cards
+                    ,p.stats_position,p.stats_at_bat,p.stats_hits,p.stats_doubles,p.stats_triples,p.stats_home_runs,p.stats_rbi--key stats for fielders
+                    ,t.team_city,t.team_name,t.team_league --team information by year
+            from cards c 
+                join player_stats_by_year p on c.card_player_id=p.players_player_id 
+                join teams t on t.team_code=p.team_id
+            where c.card_desc like @search_str and c.card_stat_year=p.stats_year order by c.card_year
+            END
+        ELSE --graded cards
+            BEGIN
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+                join player_stats_by_year p on c.bills_card_player_id=p.players_player_id
+                join teams t on t.team_code=p.team_id 
+            where c.bills_card_psa_desc like @search_str and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
+            END
+    END
+    ELSE --for a specific year
+    BEGIN
+        IF @card_type='raw' --for raw cards
+            BEGIN
+            select c.card_desc,c.card_year,c.card_num,c.card_stat_year,c.card_notes --from cards
+                    ,p.stats_wins,p.stats_losses,p.stats_era--key stats for pitchers
+                    ,t.team_city,t.team_name,t.team_league --team information by year
+            from cards c 
+                join player_stats_by_year p on c.card_player_id=p.players_player_id 
+                join teams t on t.team_code=p.team_id
+            where c.card_desc like @search_str and c.card_year like @year and c.card_stat_year=p.stats_year order by c.card_year
+            END
+        ELSE --for graded cards
+            BEGIN
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+                join player_stats_by_year p on c.bills_card_player_id=p.players_player_id 
+                join teams t on t.team_code=p.team_id
+            where c.bills_card_psa_desc like @search_str and c.bills_card_year like @year and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
+            END
+    END
+
+GO
+Create procedure p_card_select_pitchers
+    @card_type char(6), --raw or graded
+    @search_str nvarchar(100), -- serach string
+    @year char(4) --specific year or 'all' for all years
+AS           
+IF @year = 'all' --for all years
+    BEGIN
+        IF @card_type='raw' --raw cards
+            BEGIN
+            select c.card_desc,c.card_year,c.card_num,c.card_stat_year,c.card_notes --from cards
+                    ,p.stats_wins,p.stats_losses,p.stats_era--key stats for pitchers
+                    ,t.team_city,t.team_name,t.team_league --team information by year
+            from cards c 
+                join player_stats_by_year p on c.card_player_id=p.players_player_id 
+                join teams t on t.team_code=p.team_id
+            where c.card_desc like @search_str and c.card_stat_year=p.stats_year order by c.card_year
+            END
+        ELSE --graded cards
+            BEGIN
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+                join player_stats_by_year p on c.bills_card_player_id=p.players_player_id
+                join teams t on t.team_code=p.team_id 
+            where c.bills_card_psa_desc like @search_str and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
+            END
+    END
+    ELSE --for a specific year
+    BEGIN
+        IF @card_type='raw' --for raw cards
+            BEGIN
+            select c.card_desc,c.card_year,c.card_num,c.card_stat_year,c.card_notes --from cards
+                    ,p.stats_wins,p.stats_losses,p.stats_era--key stats for pitchers
+                    ,t.team_city,t.team_name,t.team_league --team information by year
+            from cards c 
+                join player_stats_by_year p on c.card_player_id=p.players_player_id 
+                join teams t on t.team_code=p.team_id
+            where c.card_desc like @search_str and c.card_year like @year and c.card_stat_year=p.stats_year order by c.card_year
+            END
+        ELSE --for graded cards
+            BEGIN
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+                join player_stats_by_year p on c.bills_card_player_id=p.players_player_id 
+                join teams t on t.team_code=p.team_id
+            where c.bills_card_psa_desc like @search_str and c.bills_card_year like @year and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
+            END
+    END
+
+GO
+Create procedure p_card_select_other
+    @card_type char(6), --raw or graded
+    @search_str nvarchar(100), -- serach string
+    @year char(4) --specific year or 'all' for all years
+AS           
+IF @year = 'all' --for all years
+    BEGIN
+        IF @card_type='raw' --raw cards
+            BEGIN
+                select c.card_desc,c.card_year,c.card_num,c.card_notes --from cards
+                from cards c 
+                where c.card_desc like @search_str and c.card_player_id is null order by c.card_year
+            END
+        ELSE --graded cards
+            BEGIN
+                select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher 
+                from bills_cards c 
+                where c.bills_card_psa_desc like @search_str and c.bills_card_player_id is null order by c.bills_card_year
+            END
+    END
+    ELSE --for a specific year
+    BEGIN
+        IF @card_type='raw' --for raw cards
+            BEGIN
+                select c.card_desc,c.card_year,c.card_num,c.card_notes --from cards
+                from cards c 
+                where c.card_desc like @search_str and c.card_year like @year and c.card_player_id is null
+            END
+        ELSE --for graded cards
+            BEGIN
+                select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher 
+                from bills_cards c 
+                where c.bills_card_psa_desc like @search_str and c.bills_card_year like @year and c.bills_card_player_id is null
+            END
+    END
+
+GO
+declare @card_search_type char(8) -- 3 options from application 'pitchers', 'fielders','other'
+set @card_search_type='other' --simulating as a variable sent from the User interface
+
+IF @card_search_type='pitchers'--simulating inputs as variables from the user interface
+    BEGIN
+        EXEC p_card_select_pitchers
+            @card_type='raw',
+            @search_str='nol% rya%',
+            @year='all'
+    END
+ELSE IF @card_search_type='fielders'
+    BEGIN
+        EXEC p_card_select_fielders
+            @card_type='graded',
+            @search_str='regg% jack%',
+            @year='all'
+    END
+ELSE
+    BEGIN
+        EXEC p_card_select_other
+            @card_type='raw',
+            @search_str='rookie%',
+            @year='all'
+    END
+
+--TEMPORTY CODE THAT WAS USED TO CHECK RESULTS
+/*select c.bills_card_player_id,p.players_player_id,bills_card_year from bills_cards c 
+join player_stats_by_year p on c.bills_card_player_id=p.players_player_id where c.bills_card_player_id != p.players_player_id
+
+select bills_card_cert,bills_card_psa_desc,bills_card_player_id,bills_card_year from bills_cards 
+where bills_card_player_id is not null order by bills_card_psa_desc
+
+select * from players where player_id = 1270
+
+declare @player_id INT
+set @player_id = (select player_id from players where player_name like 'Regg% Jack%')
+select * from player_stats_by_year p 
+    join teams t on p.team_id=t.team_code 
+    join players pl on p.players_player_id=pl.player_id where players_player_id =@player_id order by stats_year*/
+
+--END USE CASE 4
