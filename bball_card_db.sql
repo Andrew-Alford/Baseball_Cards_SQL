@@ -119,6 +119,7 @@ create table fielders (
 select c.card_desc,c.card_player_id,p.player_id,p.player_url from cards c join players p on c.card_player_id=p.player_id order by p.player_id
 */
 
+SELECT * FROM information_schema.columns WHERE table_name = 'cards'
 --TABLE CARDS...Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a composite unique constraint
 Alter Table cards
     Add card_id Int Identity(1, 1)
@@ -130,13 +131,17 @@ Alter TABLE cards
     ADD Foreign key (card_player_id)
     references players(player_id)
 
+drop table if exists players
 --TABLE PLAYERS...Loaded data into players from a .csv using the Azure extension and then altered it to add an ID ad a PK
 Alter Table players
     Add player_id Int Identity(1, 1)
 Alter Table players
     Add primary key (player_id)
-Alter Table players
-    drop column player_id_load
+CREATE UNIQUE INDEX uq_player_url
+  ON players (player_url)
+  WHERE player_url IS NOT NULL
+
+
 
 --TABLE BILLS_CARDS...Loaded data into bills_cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a unique constraint
 Alter Table bills_cards
@@ -245,8 +250,8 @@ card_pop_higher int,
 card_stat_year int,
 card_player_id int
 )
-GO
 
+GO
 CREATE PROCEDURE p_upsert_bills_cards
     @var_bills_upserts 
     bills_upsert_type READONLY
@@ -281,20 +286,35 @@ WHEN NOT MATCHED THEN
     VALUES (source.card_cert, source.card_spec, source.card_num, source.card_year, source.card_psa_desc, source.card_grade, 
     source.card_pop, source.card_pop_higher, source.card_stat_year, source.card_player_id);
 END
-GO
 
--- declaring a table variable "var_upsert_bills_cards" with insert values
+GO
+-- declaring a table variable "var_upsert_bills_cards" with insert values that would come from the user interface
 DECLARE @var_upsert_bills_cards AS bills_upsert_type
 INSERT INTO @var_upsert_bills_cards (card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, 
 card_pop, card_pop_higher, card_stat_year, card_player_id)
-VALUES (1234567890, 1234567890, 555, 1986, 'TESTING BILLS UPSERT', 8.5, 45, 10, 1985, 687)
+VALUES (1234567890, 1234567890, 555, 1986, 'TESTING BILLS UPSERT', 9, 23, 6, 1985, 687)
+INSERT INTO @var_upsert_bills_cards (card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, 
+card_pop, card_pop_higher, card_stat_year, card_player_id)
+VALUES (1111111, 2222222, 666, 1986, 'TESTING BILLS UPSERT2', 8.5, 45, 10, 1985, 687)
+-- executing my stored procedure (p_upsert_bills_cards) to affect the table bills_cards
+EXEC p_upsert_bills_cards @var_upsert_bills_cards
+
+GO
+-- declaring a table variable "var_upsert_bills_cards" with update values that would come from the user interface
+DECLARE @var_upsert_bills_cards AS bills_upsert_type
+INSERT INTO @var_upsert_bills_cards (card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, 
+card_pop, card_pop_higher, card_stat_year, card_player_id)
+VALUES (1234567890, 1234567890, 555, 1986, 'UPDATING 1ST TEST', 9, 23, 6, 1985, 687)
+INSERT INTO @var_upsert_bills_cards (card_cert, card_spec, card_num, card_year, card_psa_desc, card_grade, 
+card_pop, card_pop_higher, card_stat_year, card_player_id)
+VALUES (1111111, 2222222, 666, 1986, 'UPDATING 2ND TEST', 8.5, 45, 10, 1985, 687)
 -- executing my stored procedure (p_upsert_bills_cards) to affect the table bills_cards
 EXEC p_upsert_bills_cards @var_upsert_bills_cards
 
 -- just checking results
 GO
-delete from bills_cards where bills_card_cert=1234567890
-select * from bills_cards where bills_card_cert=1234567890
+delete from bills_cards where bills_card_cert=1234567890 or bills_card_cert=1111111
+select * from bills_cards where bills_card_cert=1234567890 or bills_card_cert=1111111
 
 --END USE CASE 5
 
@@ -531,7 +551,8 @@ IF @year = 'all' --for all years
         IF @card_type='raw' --raw cards
             BEGIN
             select c.card_desc,c.card_year,c.card_num,c.card_stat_year,c.card_notes --from cards
-                    ,p.stats_position,p.stats_at_bat,p.stats_hits,p.stats_doubles,p.stats_triples,p.stats_home_runs,p.stats_rbi--key stats for fielders
+                    ,p.stats_position,p.stats_batting_avg,p.stats_on_base_perc,p.stats_at_bat,p.stats_hits--key stats for fielders
+                    ,p.stats_doubles,p.stats_triples,p.stats_home_runs,p.stats_rbi--key stats for fielders (continued)
                     ,t.team_city,t.team_name,t.team_league --team information by year
             from cards c 
                 join player_stats_by_year p on c.card_player_id=p.players_player_id 
@@ -551,7 +572,8 @@ IF @year = 'all' --for all years
         IF @card_type='raw' --for raw cards
             BEGIN
             select c.card_desc,c.card_year,c.card_num,c.card_stat_year,c.card_notes --from cards
-                    ,p.stats_wins,p.stats_losses,p.stats_era--key stats for pitchers
+                    ,p.stats_position,p.stats_batting_avg,p.stats_on_base_perc,p.stats_at_bat,p.stats_hits--key stats for fielders
+                    ,p.stats_doubles,p.stats_triples,p.stats_home_runs,p.stats_rbi--key stats for fielders (continued)
                     ,t.team_city,t.team_name,t.team_league --team information by year
             from cards c 
                 join player_stats_by_year p on c.card_player_id=p.players_player_id 
@@ -653,7 +675,7 @@ IF @year = 'all' --for all years
 
 GO
 declare @card_search_type char(8) -- 3 options from application 'pitchers', 'fielders','other'
-set @card_search_type='other' --simulating as a variable sent from the User interface
+set @card_search_type='fielders' --simulating as a variable sent from the User interface
 
 IF @card_search_type='pitchers'--simulating inputs as variables from the user interface
     BEGIN
@@ -665,7 +687,7 @@ IF @card_search_type='pitchers'--simulating inputs as variables from the user in
 ELSE IF @card_search_type='fielders'
     BEGIN
         EXEC p_card_select_fielders
-            @card_type='graded',
+            @card_type='raw',
             @search_str='regg% jack%',
             @year='all'
     END
