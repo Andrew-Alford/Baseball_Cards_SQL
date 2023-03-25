@@ -119,7 +119,9 @@ create table fielders (
 select c.card_desc,c.card_player_id,p.player_id,p.player_url from cards c join players p on c.card_player_id=p.player_id order by p.player_id
 */
 
-SELECT * FROM information_schema.columns WHERE table_name = 'cards'
+SELECT * FROM information_schema.columns WHERE table_name = 'teams'
+
+drop table if exists cards
 --TABLE CARDS...Loaded data into cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a composite unique constraint
 Alter Table cards
     Add card_id Int Identity(1, 1)
@@ -142,7 +144,7 @@ CREATE UNIQUE INDEX uq_player_url
   WHERE player_url IS NOT NULL
 
 
-
+drop table if exists bills_cards
 --TABLE BILLS_CARDS...Loaded data into bills_cards from a .csv using the Azure extension and then altered it to add an ID, PK, FK, and a unique constraint
 Alter Table bills_cards
     Add bills_card_id Int Identity(1, 1)
@@ -154,6 +156,8 @@ Alter TABLE bills_cards
     ADD Foreign key (bills_card_player_id)
     references players(player_id)
 
+drop table if exists teams
+-- TABLE TEAMS...Loaded data into teams from a .csv using the Azure extension.  No alterations needed.
 
 select * from cards left join players on cards.card_player_id=players.player_id
 select * from teams
