@@ -565,7 +565,11 @@ IF @year = 'all' --for all years
             END
         ELSE --graded cards
             BEGIN
-            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher --from bills_cards
+                    ,p.stats_position,p.stats_batting_avg,p.stats_on_base_perc,p.stats_at_bat,p.stats_hits--key stats for fielders
+                    ,p.stats_doubles,p.stats_triples,p.stats_home_runs,p.stats_rbi--key stats for fielders (continued)
+                    ,t.team_city,t.team_name,t.team_league --team information by year
+            from bills_cards c 
                 join player_stats_by_year p on c.bills_card_player_id=p.players_player_id
                 join teams t on t.team_code=p.team_id 
             where c.bills_card_psa_desc like @search_str and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
@@ -586,7 +590,11 @@ IF @year = 'all' --for all years
             END
         ELSE --for graded cards
             BEGIN
-            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher --from bills_cards
+                    ,p.stats_position,p.stats_batting_avg,p.stats_on_base_perc,p.stats_at_bat,p.stats_hits--key stats for fielders
+                    ,p.stats_doubles,p.stats_triples,p.stats_home_runs,p.stats_rbi--key stats for fielders (continued)
+                    ,t.team_city,t.team_name,t.team_league --team information by year
+            from bills_cards c 
                 join player_stats_by_year p on c.bills_card_player_id=p.players_player_id 
                 join teams t on t.team_code=p.team_id
             where c.bills_card_psa_desc like @search_str and c.bills_card_year like @year and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
@@ -613,7 +621,9 @@ IF @year = 'all' --for all years
             END
         ELSE --graded cards
             BEGIN
-            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher --from bills_cards
+                    ,p.stats_wins,p.stats_losses,p.stats_era--key stats for pitchers
+            from bills_cards c 
                 join player_stats_by_year p on c.bills_card_player_id=p.players_player_id
                 join teams t on t.team_code=p.team_id 
             where c.bills_card_psa_desc like @search_str and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
@@ -633,7 +643,9 @@ IF @year = 'all' --for all years
             END
         ELSE --for graded cards
             BEGIN
-            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher from bills_cards c 
+            select c.bills_card_psa_desc,c.bills_card_cert,c.bills_card_num,c.bills_card_year,c.bills_card_grade,c.bills_card_pop,c.bills_card_pop_higher --from bills_cards 
+                    ,p.stats_wins,p.stats_losses,p.stats_era--key stats for pitchers
+            from bills_cards c 
                 join player_stats_by_year p on c.bills_card_player_id=p.players_player_id 
                 join teams t on t.team_code=p.team_id
             where c.bills_card_psa_desc like @search_str and c.bills_card_year like @year and c.bills_card_stat_year=p.stats_year order by c.bills_card_year
@@ -679,12 +691,13 @@ IF @year = 'all' --for all years
 
 GO
 declare @card_search_type char(8) -- 3 options from application 'pitchers', 'fielders','other'
-set @card_search_type='fielders' --simulating as a variable sent from the User interface
+set @card_search_type='other' --simulating as a variable sent from the User interface
 
-IF @card_search_type='pitchers'--simulating inputs as variables from the user interface
+--simulating inputs as variables from the user interface
+IF @card_search_type='pitchers'
     BEGIN
         EXEC p_card_select_pitchers
-            @card_type='raw',
+            @card_type='graded',
             @search_str='nol% rya%',
             @year='all'
     END
@@ -699,8 +712,8 @@ ELSE
     BEGIN
         EXEC p_card_select_other
             @card_type='raw',
-            @search_str='rookie%',
-            @year='all'
+            @search_str='worl% ser%',
+            @year='1972'
     END
 
 --TEMPORTY CODE THAT WAS USED TO CHECK RESULTS
