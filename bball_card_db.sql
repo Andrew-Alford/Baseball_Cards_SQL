@@ -330,9 +330,9 @@ select * from pitchers
 
 
 --Andrew Alford Stored Procedure Use Case 1:
-DROP PROCEDURE IF EXISTS get_player_stats
+DROP PROCEDURE IF EXISTS p_get_player_stats
 GO
-CREATE PROCEDURE get_player_stats
+CREATE PROCEDURE p_get_player_stats
     @year_id INT = NULL
   , @player_first_name VARCHAR(50) = NULL
   , @player_last_name VARCHAR(50) = NULL
