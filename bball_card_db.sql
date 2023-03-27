@@ -434,13 +434,13 @@ Statements that return more than 500 rows will prompt users to refine their sear
 */
 
 --Example #1: returns the personal stats for all fielders with the first name 'reggie' for all years.
-EXEC get_player_stats @year_id = NULL, @player_first_name = 'reggie', @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 1, @professional = 0
+EXEC p_get_player_stats @year_id = NULL, @player_first_name = 'reggie', @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 1, @professional = 0
 
 --Example #2: returns the professional stats for all pitchers in the year 1974.
-EXEC get_player_stats @year_id = 1974, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 1, @fielders = 0, @personal = 0, @professional = 1
+EXEC p_get_player_stats @year_id = 1974, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 1, @fielders = 0, @personal = 0, @professional = 1
 
 --Example #3: throws error because too many rows are returned.
-EXEC get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 0, @professional = 1
+EXEC p_get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 0, @professional = 1
 
 ---- Ryan Summers Stored Procedure Use Case 2:
 drop procedure if exists get_fielder_stats
