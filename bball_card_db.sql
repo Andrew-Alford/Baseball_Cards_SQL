@@ -443,59 +443,80 @@ EXEC p_get_player_stats @year_id = 1974, @player_first_name = NULL, @player_last
 EXEC p_get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last_name = NULL, @pitchers = 0, @fielders = 1, @personal = 0, @professional = 1
 
 ---- Ryan Summers Stored Procedure Use Case 2:
-drop procedure if exists get_fielder_stats
+drop procedure if exists p_get_fielder_stats
 GO
-create procedure get_fielder_stats
-    @year int = NULL,
-    @min_batting_avg float = null,
-    @min_hr int = null,
-    @min_hits int = null,
-    @min_obp float = null,
-    @min_games_played int = null
 
+create procedure p_get_fielder_stats
+    @year INT = NULL,
+    @min_batting_avg FLOAT = NULL,
+    @min_hr INT = NULL,
+    @min_hits INT = NULL,
+    @min_obp FLOAT = NULL,
+    @min_games_played INT = NULL
 AS
 BEGIN
-    set nocount on
+    SET NOCOUNT ON;
 
-    select 
-        p.player_name, p.player_firstname, p.player_middlename, p.player_lastname, p.player_nickname, p.player_url,
-        s.stats_year, 
-        cast(s.stats_hits as float) / nullif(s.stats_at_bat, 0) as batting_avg,
-        s.stats_home_runs, s.stats_hits,
-        cast(s.stats_hits+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch as float) /
-            nullif(s.stats_at_bat+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch+s.stats_sac_flies,0) as on_base_perc,
-        s.stats_games
-    from players as p
-        inner join player_stats_by_year as s 
-            on p.player_id = s.players_player_id 
-    where s.stats_position != 'P'
-        and (@year is null or s.stats_year = @year)
-        and (@min_batting_avg is null or cast(s.stats_hits as float) / nullif(s.stats_at_bat,0) >= @min_batting_avg)
-        and (@min_hr is null or s.stats_home_runs >= @min_hr)
-        and (@min_hits is null or s.stats_hits >= @min_hits)
-        and (@min_obp is null or cast(s.stats_hits+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch as float) /
-        nullif(s.stats_at_bat+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch+s.stats_sac_flies,0) >= @min_obp)
-        and (@min_games_played is null or s.stats_games >= @min_games_played)
-    order by s.stats_year, p.player_name
-END
-GO
+    DECLARE @row_count INT
+    SELECT @row_count = COUNT(*) 
+    FROM players AS p
+        INNER JOIN player_stats_by_year AS s 
+            ON p.player_id = s.players_player_id 
+    WHERE s.stats_position != 'P'
+        AND (@year IS NULL OR s.stats_year = @year)
+        AND (@min_batting_avg IS NULL OR CAST(s.stats_hits AS FLOAT) / NULLIF(s.stats_at_bat, 0) >= @min_batting_avg)
+        AND (@min_hr IS NULL OR s.stats_home_runs >= @min_hr)
+        AND (@min_hits IS NULL OR s.stats_hits >= @min_hits)
+        AND (@min_obp IS NULL OR CAST(s.stats_hits + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch AS FLOAT) /
+            NULLIF(s.stats_at_bat + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch + s.stats_sac_flies, 0) >= @min_obp)
+        AND (@min_games_played IS NULL OR s.stats_games >= @min_games_played)
 
-exec get_fielder_stats 
-    @year = 1982
-    ,@min_batting_avg = 0.25 
-    ,@min_hr = 1 
-    ,@min_hits = 1 
-    ,@min_obp = 0.30 
-    ,@min_games_played = 50
+    IF @row_count > 500
+        RAISERROR('More than 500 rows returned, please refine your search.', 16, 1)
+
+    SELECT 
+        p.player_firstname, 
+        p.player_lastname, 
+        p.player_nickname, 
+        p.player_url,
+        ROUND(CAST(s.stats_hits AS FLOAT) / NULLIF(s.stats_at_bat, 0), 4) AS batting_avg,
+        s.stats_home_runs, 
+        s.stats_hits,
+        ROUND(CAST(s.stats_hits + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch AS FLOAT) /
+            NULLIF(s.stats_at_bat + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch + s.stats_sac_flies, 0), 4) AS on_base_perc,
+        s.stats_games, 
+        s.stats_year
+    FROM players AS p
+        INNER JOIN player_stats_by_year AS s 
+            ON p.player_id = s.players_player_id 
+    WHERE s.stats_position != 'P'
+        AND (@year IS NULL OR s.stats_year = @year)
+        AND (@min_batting_avg IS NULL OR CAST(s.stats_hits AS FLOAT) / NULLIF(s.stats_at_bat, 0) >= @min_batting_avg)
+        AND (@min_hr IS NULL OR s.stats_home_runs >= @min_hr)
+        AND (@min_hits IS NULL OR s.stats_hits >= @min_hits)
+        AND (@min_obp IS NULL OR CAST(s.stats_hits + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch AS FLOAT) /
+            NULLIF(s.stats_at_bat + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch + s.stats_sac_flies, 0) >= @min_obp)
+        AND (@min_games_played IS NULL OR s.stats_games >= @min_games_played)
+  END
+  GO 
+
+
+exec p_get_fielder_stats 
+    @year = 1985
+    ,@min_batting_avg = 0.25
+    ,@min_hr = 10
+    ,@min_hits = 50
+    ,@min_obp = 0.40
+    ,@min_games_played = 81
 
 -- END USE CASE #2
 
 ---- Ryan Summers Stored Procedure Use Case 3:
-drop procedure if exists get_pitcher_stats
+drop procedure if exists p_get_pitcher_stats
 GO
-create procedure get_pitcher_stats
+create procedure p_get_pitcher_stats
     @year int = NULL,
-    @min_era float = null,
+    @max_era float = null,
     @min_strk_out int = null,
     @min_wins int = null,
     @min_inns_pitched int = null
@@ -504,28 +525,83 @@ AS
 BEGIN
     set nocount on
 
-    select p.player_name, p.player_firstname, p.player_middlename, p.player_lastname,
+    DECLARE @num_rows INT
+
+    SELECT @num_rows = COUNT(*) 
+    FROM players AS p
+        INNER JOIN player_stats_by_year AS s 
+            ON p.player_id = s.players_player_id 
+    WHERE s.stats_position = 'P'
+        AND (@year IS NULL OR s.stats_year = @year)
+        AND (@max_era IS NULL OR s.stats_era <= @max_era)
+        AND (@min_strk_out IS NULL OR s.stats_strike_outs >= @min_strk_out)
+        AND (@min_wins IS NULL OR s.stats_wins >= @min_wins)
+        AND (@min_inns_pitched IS NULL OR s.stats_outs_pitched >= @min_inns_pitched)
+
+    IF (@num_rows > 500) 
+        RAISERROR('More than 500 rows returned, please refine your search.', 16, 1)
+END
+
+    select p.player_firstname, p.player_lastname,
            p.player_nickname, p.player_url,
-           s.stats_year, s.stats_era, s.stats_strike_outs, s.stats_wins,
-           s.stats_outs_pitched
+           s.stats_era, s.stats_strike_outs, s.stats_wins,
+           s.stats_outs_pitched,s.stats_year
     from players as p
         inner join player_stats_by_year as s 
             on p.player_id = s.players_player_id 
     where s.stats_position = 'P'
         and (@year is null or s.stats_year = @year)
-        and (@min_era is null or s.stats_era >= @min_era)
+        and (@max_era is null or s.stats_era <= @max_era)
         and (@min_strk_out is null or s.stats_strike_outs >= @min_strk_out)
         and (@min_wins is null or s.stats_wins >= @min_wins)
         and (@min_inns_pitched is null or s.stats_outs_pitched >= @min_inns_pitched)
-    order by s.stats_year, p.player_name
+    order by s.stats_era, s.stats_strike_outs desc, s.stats_wins desc, s.stats_outs_pitched desc
 END
+GO
 
-exec get_pitcher_stats 
-    @year = 1977 
-    ,@min_era = 6 
-    ,@min_strk_out = 3.50 
-    ,@min_wins = 1.20 
-    ,@min_inns_pitched = 100
+exec p_get_pitcher_stats 
+    ,@max_era = 10
+    ,@min_strk_out = 1
+    ,@min_wins = 1
+    ,@min_inns_pitched = 1
+
+-- END USE CASE #3
+select * from cards
+select * from bills_cards
+
+-- Ryans cleanup
+select *
+from INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+where TABLE_NAME = 'players'
+
+SELECT Col.Column_Name from 
+    INFORMATION_SCHEMA.TABLE_CONSTRAINTS Tab, 
+    INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE Col 
+WHERE 
+    Col.Constraint_Name = Tab.Constraint_Name
+    AND Col.Table_Name = Tab.Table_Name
+    AND Tab.Constraint_Type = 'PRIMARY KEY'
+    AND Col.Table_Name = 'cards'
+
+select COLUMN_NAME, DATA_TYPE 
+from INFORMATION_SCHEMA.COLUMNS 
+where TABLE_NAME = 'players'
+
+-- add foreign key to stats table
+-- ref teams table
+alter table player_stats_by_year
+    alter COLUMN team_id char(3)
+
+alter table player_stats_by_year
+    add constraint fk_team_id foreign key (team_id)
+    references teams(team_code)
+
+
+-- need a PK in stats table*********
+
+
+
+-- END RYANS CLEANUP
 
 -- END USE CASE #3
 
