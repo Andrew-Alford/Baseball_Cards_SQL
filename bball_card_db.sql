@@ -446,77 +446,53 @@ EXEC p_get_player_stats @year_id = NULL, @player_first_name = NULL, @player_last
 drop procedure if exists p_get_fielder_stats
 GO
 
-create procedure p_get_fielder_stats
-    @year INT = NULL,
-    @min_batting_avg FLOAT = NULL,
-    @min_hr INT = NULL,
-    @min_hits INT = NULL,
-    @min_obp FLOAT = NULL,
-    @min_games_played INT = NULL
 AS
 BEGIN
-    SET NOCOUNT ON;
+    set nocount on
 
-    DECLARE @row_count INT
-    SELECT @row_count = COUNT(*) 
-    FROM players AS p
-        INNER JOIN player_stats_by_year AS s 
-            ON p.player_id = s.players_player_id 
-    WHERE s.stats_position != 'P'
-        AND (@year IS NULL OR s.stats_year = @year)
-        AND (@min_batting_avg IS NULL OR CAST(s.stats_hits AS FLOAT) / NULLIF(s.stats_at_bat, 0) >= @min_batting_avg)
-        AND (@min_hr IS NULL OR s.stats_home_runs >= @min_hr)
-        AND (@min_hits IS NULL OR s.stats_hits >= @min_hits)
-        AND (@min_obp IS NULL OR CAST(s.stats_hits + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch AS FLOAT) /
-            NULLIF(s.stats_at_bat + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch + s.stats_sac_flies, 0) >= @min_obp)
-        AND (@min_games_played IS NULL OR s.stats_games >= @min_games_played)
-
-    IF @row_count > 500
-        RAISERROR('More than 500 rows returned, please refine your search.', 16, 1)
-
-    SELECT 
-        p.player_firstname, 
-        p.player_lastname, 
-        p.player_nickname, 
-        p.player_url,
-        ROUND(CAST(s.stats_hits AS FLOAT) / NULLIF(s.stats_at_bat, 0), 4) AS batting_avg,
-        s.stats_home_runs, 
-        s.stats_hits,
-        ROUND(CAST(s.stats_hits + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch AS FLOAT) /
-            NULLIF(s.stats_at_bat + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch + s.stats_sac_flies, 0), 4) AS on_base_perc,
-        s.stats_games, 
-        s.stats_year
-    FROM players AS p
-        INNER JOIN player_stats_by_year AS s 
-            ON p.player_id = s.players_player_id 
-    WHERE s.stats_position != 'P'
-        AND (@year IS NULL OR s.stats_year = @year)
-        AND (@min_batting_avg IS NULL OR CAST(s.stats_hits AS FLOAT) / NULLIF(s.stats_at_bat, 0) >= @min_batting_avg)
-        AND (@min_hr IS NULL OR s.stats_home_runs >= @min_hr)
-        AND (@min_hits IS NULL OR s.stats_hits >= @min_hits)
-        AND (@min_obp IS NULL OR CAST(s.stats_hits + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch AS FLOAT) /
-            NULLIF(s.stats_at_bat + s.stats_base_on_balls + s.stats_intentional_walk + s.stats_hit_by_pitch + s.stats_sac_flies, 0) >= @min_obp)
-        AND (@min_games_played IS NULL OR s.stats_games >= @min_games_played)
-  END
+    select 
+        p.player_name, p.player_firstname, p.player_middlename, p.player_lastname, p.player_nickname, p.player_url,
+        s.stats_year, 
+        cast(s.stats_hits as float) / nullif(s.stats_at_bat, 0) as batting_avg,
+        s.stats_home_runs, s.stats_hits,
+        cast(s.stats_hits+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch as float) /
+            nullif(s.stats_at_bat+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch+s.stats_sac_flies,0) as on_base_perc,
+        s.stats_games
+    from players as p
+        inner join player_stats_by_year as s 
+            on p.player_id = s.players_player_id 
+    where s.stats_position != 'P'
+        and (@year is null or s.stats_year = @year)
+        and (@min_batting_avg is null or cast(s.stats_hits as float) / nullif(s.stats_at_bat,0) >= @min_batting_avg)
+        and (@min_hr is null or s.stats_home_runs >= @min_hr)
+        and (@min_hits is null or s.stats_hits >= @min_hits)
+        and (@min_obp is null or cast(s.stats_hits+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch as float) /
+        nullif(s.stats_at_bat+s.stats_base_on_balls+s.stats_intentional_walk+s.stats_hit_by_pitch+s.stats_sac_flies,0) >= @min_obp)
+        and (@min_games_played is null or s.stats_games >= @min_games_played)
+    order by s.stats_year, p.player_name
+END
+GO
   GO 
+GO
+  GO 
+GO
 
-
-exec p_get_fielder_stats 
-    @year = 1985
-    ,@min_batting_avg = 0.25
-    ,@min_hr = 10
-    ,@min_hits = 50
-    ,@min_obp = 0.40
-    ,@min_games_played = 81
+exec get_fielder_stats 
+    @year = 1982
+    ,@min_batting_avg = 0.25 
+    ,@min_hr = 1 
+    ,@min_hits = 1 
+    ,@min_obp = 0.30 
+    ,@min_games_played = 50
 
 -- END USE CASE #2
 
 ---- Ryan Summers Stored Procedure Use Case 3:
-drop procedure if exists p_get_pitcher_stats
+drop procedure if exists get_pitcher_stats
 GO
-create procedure p_get_pitcher_stats
+create procedure get_pitcher_stats
     @year int = NULL,
-    @max_era float = null,
+    @min_era float = null,
     @min_strk_out int = null,
     @min_wins int = null,
     @min_inns_pitched int = null
